@@ -33,6 +33,21 @@ function App() {
           </NavigationMenuList>
         </NavigationMenu>
       </div>
+      <h1 className='bg-amber-700 max-w-sm'>Hello</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.jsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+    </>
+  )
+}
 
       {/* Mobile Navbar Hamburger */}
       <div className="md:hidden flex justify-between items-center px-4 h-[70px]">
