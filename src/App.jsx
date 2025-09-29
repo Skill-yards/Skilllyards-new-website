@@ -1,5 +1,5 @@
-import { Button } from '@/components/ui/button';
-import Footer from './components/Footer.jsx';
+import { Button } from "@/components/ui/button";
+import Footer from "./components/Footer.jsx";
 
 function App() {
   return (

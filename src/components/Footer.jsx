@@ -1,19 +1,9 @@
-import React from 'react';
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
+import React from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
-import {
-  Instagram,
-  Facebook,
-  Twitter,
-  Linkedin,
-} from 'lucide-react';
+import { Instagram, Facebook, Twitter, Linkedin } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -25,22 +15,39 @@ const Footer = () => {
             <CardTitle className="text-lg">Skilllyards</CardTitle>
           </CardHeader>
           <CardContent className="p-0 text-sm text-muted-foreground">
-            A collection of 100+ responsive HTML templates for your startup business or side project.
+            A collection of 100+ responsive HTML templates for your startup
+            business or side project.
           </CardContent>
           <div className="flex gap-4 pt-2">
-  <a href="#" aria-label="Instagram" className="text-muted-foreground hover:text-foreground">
-    <Instagram className="w-5 h-5" />
-  </a>
-  <a href="#" aria-label="Facebook" className="text-muted-foreground hover:text-foreground">
-    <Facebook className="w-5 h-5" />
-  </a>
-  <a href="#" aria-label="Twitter" className="text-muted-foreground hover:text-foreground">
-    <Twitter className="w-5 h-5" />
-  </a>
-  <a href="#" aria-label="LinkedIn" className="text-muted-foreground hover:text-foreground">
-    <Linkedin className="w-5 h-5" />
-  </a>
-</div>
+            <a
+              href="#"
+              aria-label="Instagram"
+              className="text-muted-foreground hover:text-foreground"
+            >
+              <Instagram className="w-5 h-5" />
+            </a>
+            <a
+              href="#"
+              aria-label="Facebook"
+              className="text-muted-foreground hover:text-foreground"
+            >
+              <Facebook className="w-5 h-5" />
+            </a>
+            <a
+              href="#"
+              aria-label="Twitter"
+              className="text-muted-foreground hover:text-foreground"
+            >
+              <Twitter className="w-5 h-5" />
+            </a>
+            <a
+              href="#"
+              aria-label="LinkedIn"
+              className="text-muted-foreground hover:text-foreground"
+            >
+              <Linkedin className="w-5 h-5" />
+            </a>
+          </div>
         </Card>
 
         {/* Product Section */}
@@ -49,8 +56,19 @@ const Footer = () => {
             <CardTitle className="text-base">Product</CardTitle>
           </CardHeader>
           <CardContent className="p-0 space-y-2 text-sm text-muted-foreground">
-            {['Overview', 'Pricing', 'Marketplace', 'Features', 'Integrations', 'Marketing'].map((item) => (
-              <a key={item} href={`/${item.toLowerCase()}`} className="hover:text-foreground block">
+            {[
+              "Overview",
+              "Pricing",
+              "Marketplace",
+              "Features",
+              "Integrations",
+              "Marketing",
+            ].map((item) => (
+              <a
+                key={item}
+                href={`/${item.toLowerCase()}`}
+                className="hover:text-foreground block"
+              >
                 {item}
               </a>
             ))}
@@ -63,8 +81,12 @@ const Footer = () => {
             <CardTitle className="text-base">Company</CardTitle>
           </CardHeader>
           <CardContent className="p-0 space-y-2 text-sm text-muted-foreground">
-            {['About', 'Team', 'Blog', 'Careers', 'Contact'].map((item) => (
-              <a key={item} href={`/${item.toLowerCase()}`} className="hover:text-foreground block">
+            {["About", "Team", "Blog", "Careers", "Contact"].map((item) => (
+              <a
+                key={item}
+                href={`/${item.toLowerCase()}`}
+                className="hover:text-foreground block"
+              >
                 {item}
               </a>
             ))}
@@ -83,8 +105,11 @@ const Footer = () => {
                 <Button type="submit">Subscribe</Button>
               </div>
               <p className="text-xs text-muted-foreground">
-                By submitting, you agree to our{' '}
-                <a href="/privacy-policy" className="underline hover:text-foreground">
+                By submitting, you agree to our{" "}
+                <a
+                  href="/privacy-policy"
+                  className="underline hover:text-foreground"
+                >
                   Privacy Policy
                 </a>
               </p>
