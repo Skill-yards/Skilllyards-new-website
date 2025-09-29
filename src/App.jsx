@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import Footer from './components/Footer.jsx';
 
 function App() {
   return (
@@ -7,6 +8,7 @@ function App() {
       <Button>Primary Button</Button>
       <Button variant="outline">Outline Button</Button>
       <Button variant="destructive">Destructive Button</Button>
+      <Footer />
     </div>
   );
 }
