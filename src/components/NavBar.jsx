@@ -9,7 +9,7 @@ import {
   NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import Marquee from "./ui/Marquee";
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,64 +29,70 @@ const Navbar = () => {
         { name: "BBA Programs", href: "/programs/bba" },
       ]
     },
-    {
-      name: "Resources", 
-      items: [
-        { name: "Blogs & Articles", href: "/blogs" },
-        { name: "Study Material", href: "/study-material" },
-      ]
-    }
   ];
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50">
-      <Marquee text="+91 70601000562 join now" />
+    <div className="fixed top-0 left-0 right-0 z-50 py-3">
+     
+    
       
-      <nav className="bg-[#D1D0D0] shadow-2xl rounded-full mx-3">
-        <div className="container mx-auto flex items-center justify-between px-6 py-3">
-          {/* Logo */}
+      <nav 
+  className="bg-white/20 backdrop-blur-lg shadow-2xl rounded-full mx-3 sticky top-0 z-50 border border-white/30"
+  role="navigation" 
+  aria-label="Main navigation"
+>
+        <div className="container mx-auto flex items-center justify-between px-5 py-3">
+          
           <div className="flex items-center">
-            <img src="src/assets/logo.png" alt="Logo" className="h-10 w-35" />
+            <img src="src\assets\logo.png" alt="Logo" className="h-10 w-35" />
           </div>
 
           <div className="hidden md:block">
             <NavigationMenu>
-              <NavigationMenuList className="flex gap-4">
+              <NavigationMenuList className="flex gap-3">
                 
                
                 <NavigationMenuItem>
                   <NavigationMenuLink
                     href="/"
-                    className="px-4 py-2 text-slate-800 font-medium hover:text-blue-600 hover:bg-gray-100 rounded-full transition duration-150"
+                    className="px-4 py-2 text-black font-medium hover:text-blue-600 hover:bg-gray-100 rounded-full transition duration-150"
                   >
                     Home
                   </NavigationMenuLink>
                 </NavigationMenuItem>
-
-               
                 {dropdownMenus.map((menu) => (
-                  <NavigationMenuItem key={menu.name}>
-                    <NavigationMenuTrigger className="px-4 py-2 text-white bg-blue-950 font-medium hover:text-blue-600 hover:bg-gray-100 rounded-full transition duration-150">
-                      {menu.name}
-                    </NavigationMenuTrigger>
-                    <NavigationMenuContent className="min-w-[180px] p-2 bg-blue-900 shadow-lg border rounded">
-                      {menu.items.map((item) => (
-                        <NavigationMenuLink
-                          key={item.name}
-                          href={item.href}
-                          className="block px-4 py-2 text-sm text-white hover:bg-blue-950 rounded-full"
-                        >
-                          {item.name}
-                        </NavigationMenuLink>
-                      ))}
-                    </NavigationMenuContent>
-                  </NavigationMenuItem>
-                ))}
+  <NavigationMenuItem key={menu.name}>
+    <NavigationMenuTrigger className="px-4 py-2 text-white bg-blue-950 font-medium hover:text-blue-600 hover:bg-gray-100 rounded-full transition duration-150">
+      {menu.name}
+    </NavigationMenuTrigger>
+    <NavigationMenuContent className="min-w-[180px] p-2 bg-blue-900 shadow-lg border rounded">
+      {menu.items.map((item) => (
+        <NavigationMenuLink
+          key={item.name}
+          href={item.href}
+          className="block px-4 py-2 text-sm text-white hover:bg-blue-950 rounded-full"
+        >
+          {item.name}
+        </NavigationMenuLink>
+      ))}
+    </NavigationMenuContent>
+  </NavigationMenuItem>
+))}
+<NavigationMenuItem>
+                  <NavigationMenuLink
+                    href="/Blog"
+                    className="px-5  py-2 text-black font-medium hover:text-blue-600 hover:bg-gray-100 rounded-full transition duration-150"
+                  >
+                    Blogs
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+                
+                <NavigationMenuItem></NavigationMenuItem>
 
                 <NavigationMenuItem>
                   <NavigationMenuLink
                     href="/about"
-                    className="px-4 py-2 text-slate-800 font-medium hover:text-blue-600 hover:bg-gray-100 rounded-full transition duration-150"
+                    className="px-4 py-2 text-black font-medium hover:text-blue-600 hover:bg-gray-100 rounded-full transition duration-150"
                   >
                     About
                   </NavigationMenuLink>
@@ -95,7 +101,7 @@ const Navbar = () => {
                 <NavigationMenuItem>
                   <NavigationMenuLink
                     href="/contact"
-                    className="px-4 py-2 text-slate-800 font-medium hover:text-blue-600 hover:bg-gray-100 rounded-full transition duration-150"
+                    className="px-4 py-2 text-black font-medium hover:text-blue-600 hover:bg-gray-100 rounded-full transition duration-150"
                   >
                     Contact Us
                   </NavigationMenuLink>
@@ -119,7 +125,7 @@ const Navbar = () => {
                     <a
                       key={item.name}
                       href={item.href}
-                      className="px-4 py-3 text-slate-800 font-medium hover:text-blue-600 hover:bg-gray-100 rounded-full transition duration-150 block"
+                      className="px-4 py-3 text-white font-medium hover:text-blue-600 hover:bg-gray-100 rounded-full transition duration-150 block"
                       onClick={() => setIsOpen(false)}
                     >
                       {item.name}
