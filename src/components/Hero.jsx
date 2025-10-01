@@ -4,7 +4,7 @@ const icons = {
   fullstack: (
     <svg
       viewBox="0 0 24 24"
-      className="h-10 w-10"
+      className="h-8 w-8 sm:h-10 sm:w-10"
       fill="none"
       stroke="currentColor"
       strokeWidth="1.8"
@@ -20,7 +20,7 @@ const icons = {
   marketing: (
     <svg
       viewBox="0 0 24 24"
-      className="h-10 w-10"
+      className="h-8 w-8 sm:h-10 sm:w-10"
       fill="none"
       stroke="currentColor"
       strokeWidth="1.8"
@@ -36,7 +36,7 @@ const icons = {
   analytics: (
     <svg
       viewBox="0 0 24 24"
-      className="h-10 w-10"
+      className="h-8 w-8 sm:h-10 sm:w-10"
       fill="none"
       stroke="currentColor"
       strokeWidth="1.8"
@@ -61,17 +61,19 @@ export default function SkillyardsHero() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden min-h-screen">
+    <section className="w-full min-h-screen px-4 sm:px-6 lg:px-8 pt-20 md:pt-24 pb-12 md:pb-16 bg-gray-100">
+      {/* Background */}
       <div 
-        className="pointer-events-none absolute inset-0"
+        className="pointer-events-none absolute inset-0 w-full h-full"
         style={{
           background: 'rgb(209, 208, 208)', 
         }}
       />
 
-      <div className="relative mx-auto max-w-7xl px-4 pt-24 pb-12 sm:pb-16 md:pb-20 lg:pb-24">
+      {/* Main Content */}
+      <div className="relative z-10 mx-auto max-w-7xl px-4 pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-12 md:pb-16 lg:pb-20">
         <div
-          className="grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-3 mt-8 sm:mt-12"
+          className="grid grid-cols-1 gap-4 sm:gap-5 md:gap-6 lg:gap-8 md:grid-cols-3 mt-6 sm:mt-8 md:mt-10 lg:mt-12"
           style={{
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
@@ -157,32 +159,38 @@ function TrackPanel({ icon, title, desc, href, accent = "indigo" }) {
 
   return (
     <article
-      className={`group relative isolate overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 sm:p-7 lg:p-8 transition-shadow duration-300 shadow-sm ${accentClasses.ring} group-hover:shadow-lg`}
+      className={`group relative isolate overflow-hidden rounded-xl sm:rounded-2xl border border-slate-200 bg-white p-4 sm:p-6 lg:p-8 transition-all duration-300 shadow-sm ${accentClasses.ring} hover:shadow-lg`}
     >
+      {/* Background Blob */}
       <div
-        className="pointer-events-none absolute -right-10 -top-16 h-32 w-32 rounded-full opacity-20 blur-2xl"
+        className="pointer-events-none absolute -right-8 -top-12 sm:-right-10 sm:-top-16 h-24 w-24 sm:h-32 sm:w-32 rounded-full opacity-20 blur-2xl"
         aria-hidden="true"
         style={{ background: blobGradient }}
       />
 
+      {/* Pill with Icon */}
       <div
-        className={`mb-4 inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium ${accentClasses.pill}`}
+        className={`mb-3 sm:mb-4 inline-flex items-center gap-2 rounded-full px-2.5 py-1 text-xs font-medium ${accentClasses.pill}`}
       >
         <span className={accentClasses.icon}>{icon}</span>
         <span>Core Track</span>
       </div>
 
-      <h3 className="text-xl font-semibold tracking-tight text-slate-900 sm:text-2xl">
+      {/* Title */}
+      <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold tracking-tight text-slate-900 leading-tight">
         {title}
       </h3>
-      <p className="mt-2 text-slate-600">
+      
+      {/* Description */}
+      <p className="mt-2 sm:mt-3 text-sm sm:text-base text-slate-600 leading-relaxed">
         {desc}
       </p>
 
-      <div className="mt-6 flex items-center gap-3">
+      {/* CTA Buttons */}
+      <div className="mt-4 sm:mt-6 flex flex-col xs:flex-row items-start xs:items-center gap-3">
         <a
           href={href}
-          className={`inline-flex select-none items-center justify-center rounded-lg px-4 py-2.5 text-sm font-semibold text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-slate-900 active:opacity-90 ${accentClasses.cta}`}
+          className={`inline-flex select-none items-center justify-center rounded-lg px-4 py-2.5 text-sm font-semibold text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-slate-900 active:opacity-90 transition-colors duration-200 ${accentClasses.cta} w-full xs:w-auto text-center`}
         >
           Explore Courses
           <svg
@@ -202,13 +210,15 @@ function TrackPanel({ icon, title, desc, href, accent = "indigo" }) {
 
         <a
           href={href}
-          className="relative inline-flex items-center text-sm font-medium focus:outline-none"
+          className="relative inline-flex items-center text-sm font-medium focus:outline-none px-1 py-1 xs:py-0"
           style={{
             color: learnMoreHovered ? 'rgb(15 23 42)' : 'rgb(30 41 59)',
             transition: 'color 200ms ease-out'
           }}
           onMouseEnter={() => setLearnMoreHovered(true)}
           onMouseLeave={() => setLearnMoreHovered(false)}
+          onFocus={() => setLearnMoreHovered(true)}
+          onBlur={() => setLearnMoreHovered(false)}
         >
           Learn more
           <span
