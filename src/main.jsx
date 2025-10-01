@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 
 import Navbar from "./NavBar.jsx";
+import Hero from "./components/Hero";
 
 
 import App from "./App.jsx";
@@ -10,5 +11,7 @@ import App from "./App.jsx";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Navbar />
+    <Hero/>
+    <App></App>
   </StrictMode>,
 );
