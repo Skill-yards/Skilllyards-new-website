@@ -9,7 +9,7 @@ import {
   NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import Marquee from "./components/ui/Marquee";
+import Marquee from "./ui/Marquee";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,10 +39,10 @@ const Navbar = () => {
   ];
 
   return (
-    <>
+    <div className="fixed top-0 left-0 right-0 z-50">
       <Marquee text="+91 70601000562 join now" />
       
-      <nav className="bg-[#D1D0D0] shadow-2xl rounded-full ml-3 mr-3">
+      <nav className="bg-[#D1D0D0] shadow-2xl rounded-full mx-3">
         <div className="container mx-auto flex items-center justify-between px-6 py-3">
           {/* Logo */}
           <div className="flex items-center">
@@ -152,7 +152,7 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-    </>
+    </div>
   );
 };
 

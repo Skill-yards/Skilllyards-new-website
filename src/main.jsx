@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 
-import Navbar from "./NavBar.jsx";
+import Navbar from "./components/NavBar.jsx";
 import Hero from "./components/Hero";
 
 
