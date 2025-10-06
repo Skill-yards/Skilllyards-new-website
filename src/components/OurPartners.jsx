@@ -19,7 +19,7 @@ const companyLogos = [
 ];
 
 const OurPartner = () => (
-  <section className="py-16 overflow-hidden bg-white">
+  <section className="py-16 overflow-hidden bg-[#d8d4c5]">
     <div className="relative z-10">
       <h2 className="text-4xl font-extrabold text-center mb-2 text-[#0a2259] tracking-tight">
         Our Placement Partners
