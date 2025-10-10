@@ -19,8 +19,10 @@ const companyLogos = [
   { src: genpact, name: "Genpact" },
 ];
 
-const OurPartner = ({className}) => (
-  <section className={`relative py-20 overflow-hidden bg-gradient-to-br from-[#e0f7fa] via-white to-[#f1f8e9] ${className}`}>
+const OurPartner = ({ className }) => (
+  <section
+    className={`relative py-20 overflow-hidden bg-gradient-to-br from-[#e0f7fa] via-white to-[#f1f8e9] ${className}`}
+  >
     {/* Decorative gradient orbs */}
     <div className="absolute top-[-10rem] right-[-10rem] w-[400px] h-[400px] bg-gradient-to-r from-[#00bcd4]/40 to-[#1de9b6]/30 blur-[120px] rounded-full animate-pulse" />
     <div className="absolute bottom-[-8rem] left-[-8rem] w-[300px] h-[300px] bg-gradient-to-r from-[#f48fb1]/30 to-[#fdd835]/30 blur-[100px] rounded-full animate-pulse" />
@@ -30,7 +32,8 @@ const OurPartner = ({className}) => (
         Our Placement Partners
       </h2>
       <p className="text-lg text-gray-700 max-w-xl mx-auto">
-        We proudly collaborate with leading tech organizations driving innovation.
+        We proudly collaborate with leading tech organizations driving
+        innovation.
       </p>
       <div className="w-24 h-1.5 bg-gradient-to-r from-[#00bcd4] to-[#1de9b6] rounded-full mx-auto mt-6 mb-12 shadow-lg" />
 
@@ -70,7 +73,6 @@ const OurPartner = ({className}) => (
       </div>
     </div>
 
-    
     <style>{`
       @keyframes scroll {
         0% { transform: translateX(0); }

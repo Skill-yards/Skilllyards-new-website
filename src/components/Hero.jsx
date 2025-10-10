@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ArticleSlider = ({className}) => {
+const ArticleSlider = ({ className }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [showForm, setShowForm] = useState(false);
@@ -210,7 +210,10 @@ const ArticleSlider = ({className}) => {
   }, []);
 
   return (
-    <section ref={sectionRef} className={`relative h-screen overflow-hidden ${className}`}>
+    <section
+      ref={sectionRef}
+      className={`relative h-screen overflow-hidden ${className}`}
+    >
       <div
         className="relative w-full h-full"
         onMouseEnter={() => setIsAutoPlaying(false)}

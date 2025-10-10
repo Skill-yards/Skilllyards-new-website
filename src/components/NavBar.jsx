@@ -151,7 +151,10 @@ const Navbar = () => {
                   ))}
 
                   {dropdownMenus.map((menu) => (
-                    <div key={menu.name} className="border-t border-white/20 pt-4">
+                    <div
+                      key={menu.name}
+                      className="border-t border-white/20 pt-4"
+                    >
                       <h3 className="px-4 py-2 text-center text-lg font-semibold bg-gradient-to-r from-blue-800/50 to-blue-950/50 rounded-full">
                         {menu.name}
                       </h3>
