@@ -7,7 +7,10 @@ import { useCarousel } from "./useCarousel";
 
 export const TestimonialCarousel = ({ items }) => {
   const visible = 2; // desktop visible cards
-  const { index, auto, toggleAuto, next, prev, maxIndex } = useCarousel(items.length, visible);
+  const { index, auto, toggleAuto, next, prev, maxIndex } = useCarousel(
+    items.length,
+    visible,
+  );
 
   return (
     <div className="relative">
@@ -35,14 +38,18 @@ export const TestimonialCarousel = ({ items }) => {
         </div>
         <div className="flex gap-2">
           <ArrowButton dir="left" onClick={prev} disabled={index === 0} />
-          <ArrowButton dir="right" onClick={next} disabled={index === maxIndex} />
+          <ArrowButton
+            dir="right"
+            onClick={next}
+            disabled={index === maxIndex}
+          />
         </div>
       </div>
 
       <div
         className="overflow-hidden"
         onMouseEnter={() => toggleAuto(false)} // Pause on hover
-        onMouseLeave={() => toggleAuto(true)}  // Resume on leave
+        onMouseLeave={() => toggleAuto(true)} // Resume on leave
       >
         <motion.div
           className="flex gap-4"
@@ -50,7 +57,10 @@ export const TestimonialCarousel = ({ items }) => {
           transition={{ type: "spring", stiffness: 120, damping: 18 }}
         >
           {items.map((it, idx) => (
-            <div key={`${it.id}-${idx}`} className="min-w-[85%] sm:min-w-[60%] lg:min-w-[48%]">
+            <div
+              key={`${it.id}-${idx}`}
+              className="min-w-[85%] sm:min-w-[60%] lg:min-w-[48%]"
+            >
               <QuoteCard info={it} truncate />
             </div>
           ))}

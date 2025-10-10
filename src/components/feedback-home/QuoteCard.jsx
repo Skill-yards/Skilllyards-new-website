@@ -6,7 +6,10 @@ import { COLORS } from "./colors";
 export const QuoteCard = ({ info, truncate = true }) => {
   const fallbackImg = "/images/default-avatar.jpg";
   const rating = Math.round(info?.rating ?? 5);
-  const text = truncate && info.text.length > 140 ? info.text.slice(0, 140) + "…" : info.text;
+  const text =
+    truncate && info.text.length > 140
+      ? info.text.slice(0, 140) + "…"
+      : info.text;
 
   return (
     <motion.div
@@ -36,7 +39,10 @@ export const QuoteCard = ({ info, truncate = true }) => {
             style={{ borderColor: COLORS.accent }}
           />
           <div className="min-w-0">
-            <p className="font-semibold truncate" style={{ color: COLORS.text }}>
+            <p
+              className="font-semibold truncate"
+              style={{ color: COLORS.text }}
+            >
               {info.name}
             </p>
             {info.position && (
@@ -48,13 +54,19 @@ export const QuoteCard = ({ info, truncate = true }) => {
         </div>
 
         <div className="relative mt-4">
-          <Quote className="absolute -top-3 -left-1 opacity-40 w-4 h-4" color={COLORS.accent} />
+          <Quote
+            className="absolute -top-3 -left-1 opacity-40 w-4 h-4"
+            color={COLORS.accent}
+          />
           <p className="text-sm leading-relaxed" style={{ color: COLORS.text }}>
             {text}
           </p>
         </div>
 
-        <div className="flex gap-[3px] mt-4" aria-label={`Rating: ${rating} out of 5`}>
+        <div
+          className="flex gap-[3px] mt-4"
+          aria-label={`Rating: ${rating} out of 5`}
+        >
           {Array.from({ length: 5 }).map((_, i) => (
             <Star
               key={`star-${info.id}-${i}`}

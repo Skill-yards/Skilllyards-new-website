@@ -10,12 +10,11 @@ export const VideoPlayer = ({ videoIds, sticky = true }) => {
   useEffect(() => {
     const obs = new IntersectionObserver(
       ([entry]) => setAutoplay(entry.isIntersecting),
-      { threshold: 0.6 }
+      { threshold: 0.6 },
     );
     if (wrapperRef.current) obs.observe(wrapperRef.current);
     return () => obs.disconnect();
   }, []);
-
 
   return (
     <div
@@ -24,10 +23,13 @@ export const VideoPlayer = ({ videoIds, sticky = true }) => {
     >
       <Card
         className="h-full flex rounded-2xl border overflow-hidden backdrop-blur"
-        style={{ background: COLORS.cardBg, borderColor: COLORS.cardBorder, boxShadow: COLORS.shadow }}
+        style={{
+          background: COLORS.cardBg,
+          borderColor: COLORS.cardBorder,
+          boxShadow: COLORS.shadow,
+        }}
       >
         <div className="flex w-full h-full">
-          
           <div className="flex-1 flex items-center justify-center bg-black">
             <div className="w-[90%] aspect-[9/16] mx-auto rounded-xl overflow-hidden flex items-center justify-center bg-black">
               <iframe
@@ -43,7 +45,7 @@ export const VideoPlayer = ({ videoIds, sticky = true }) => {
               />
             </div>
           </div>
-          
+
           <div
             className="w-[92px] border-l flex flex-col h-full"
             style={{ borderColor: COLORS.cardBorder }}
@@ -58,7 +60,8 @@ export const VideoPlayer = ({ videoIds, sticky = true }) => {
                   }`}
                   style={{
                     borderColor: COLORS.cardBorder,
-                    boxShadow: current === id ? `0 0 0 2px ${COLORS.accent}` : "none",
+                    boxShadow:
+                      current === id ? `0 0 0 2px ${COLORS.accent}` : "none",
                   }}
                   aria-label={`Play video ${id}`}
                 >

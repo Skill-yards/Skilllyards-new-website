@@ -88,7 +88,6 @@ const Navbar = () => {
                     </NavigationMenuContent>
                   </NavigationMenuItem>
                 ))}
-
                 <NavigationMenuItem>
                   <NavigationMenuLink
                     href="/blogs"
