@@ -1,165 +1,284 @@
-import React, { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight, Calendar, Clock, ArrowRight } from "lucide-react";
-import StudentRegistrationForm from "./Form";
+import React, { useState, useEffect, useRef, useCallback } from "react";
+import { ChevronLeft, ChevronRight, ArrowRight, X } from "lucide-react";
+
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const ArticleSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [showForm, setShowForm] = useState(false);
 
-  // Three featured articles with background images
+  const sectionRef = useRef(null);
+  const navArrowsRef = useRef([]);
+  const dotsRef = useRef(null);
+  const counterRef = useRef(null);
+
   const articles = [
     {
       id: 1,
       title: "Master Full Stack Development in 2025",
-      description: "Learn modern web development with React, Node.js, and cutting-edge technologies. Build real-world projects and become job-ready.",
-     
+      description:
+        "Learn modern web development with React, Node.js, and cutting-edge technologies. Build real-world projects and become job-ready.",
       category: "Development",
-      bgImage: "https://images.unsplash.com/photo-1517148815978-75f6acaaf32c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      bgImage:
+        "https://images.unsplash.com/photo-1517148815978-75f6acaaf32c?q=80&w=1170&auto=format&fit=crop",
       ctaText: "Start Learning",
-      program: "BCA"
+      program: "BCA",
     },
     {
       id: 2,
       title: "Digital Marketing Mastery Course",
-      description: "Transform your career with comprehensive digital marketing skills. Master SEO, social media, content marketing, and analytics.",
-     
+      description:
+        "Transform your career with comprehensive digital marketing skills. Master SEO, social media, content marketing, and analytics.",
       category: "Marketing",
-      bgImage: "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+      bgImage:
+        "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&w=1920&q=80",
       ctaText: "Join Program",
-      program: "BBA"
+      program: "BBA",
     },
     {
       id: 3,
       title: "Data Analytics Career Roadmap",
-      description: "Discover the path to becoming a data analyst. Learn Python, SQL, visualization tools, and land your dream job in tech.",
-       
+      description:
+        "Discover the path to becoming a data analyst. Learn Python, SQL, visualization tools, and land your dream job in tech.",
       category: "Analytics",
-      bgImage: "https://images.pexels.com/photos/185576/pexels-photo-185576.jpeg",
+      bgImage:
+        "https://images.pexels.com/photos/185576/pexels-photo-185576.jpeg",
       ctaText: "Explore Path",
-      program: "BCA"
-    }
+      program: "BCA",
+    },
   ];
 
   const totalSlides = articles.length;
 
-  // Auto-play functionality
+  const animateSlideContent = useCallback(() => {
+    const tl = gsap.timeline();
+
+    tl.fromTo(
+      `.category-${currentSlide}`,
+      { opacity: 0, y: 30, scale: 0.8 },
+      { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "back.out(1.7)" },
+    )
+      .fromTo(
+        `.title-${currentSlide}`,
+        { opacity: 0, x: -60 },
+        { opacity: 1, x: 0, duration: 0.8, ease: "power3.out" },
+        "-=0.3",
+      )
+      .fromTo(
+        `.description-${currentSlide}`,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
+        "-=0.4",
+      )
+      .fromTo(
+        `.buttons-${currentSlide} > *`,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "power2.out",
+          stagger: 0.1,
+        },
+        "-=0.3",
+      );
+  }, [currentSlide]);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        navArrowsRef.current.filter(Boolean),
+        {
+          opacity: 0,
+          x: (index) => (index === 0 ? -50 : 50),
+        },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 1,
+          delay: 0.5,
+          ease: "power3.out",
+          stagger: 0.2,
+        },
+      );
+
+      if (dotsRef.current) {
+        gsap.fromTo(
+          dotsRef.current,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.8, delay: 0.7, ease: "power2.out" },
+        );
+      }
+
+      if (counterRef.current) {
+        gsap.fromTo(
+          counterRef.current,
+          { opacity: 0, x: 20 },
+          { opacity: 1, x: 0, duration: 0.8, delay: 0.9, ease: "power2.out" },
+        );
+      }
+
+      animateSlideContent();
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, [animateSlideContent]);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    const ctx = gsap.context(() => {
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "top 80%",
+        end: "bottom 20%",
+        onEnter: () => {
+          gsap.to(sectionRef.current, {
+            scale: 1,
+            opacity: 1,
+            duration: 0.8,
+            ease: "power2.out",
+          });
+        },
+        onLeave: () => {
+          gsap.to(sectionRef.current, {
+            scale: 0.98,
+            opacity: 0.9,
+            duration: 0.5,
+          });
+        },
+        onEnterBack: () => {
+          gsap.to(sectionRef.current, {
+            scale: 1,
+            opacity: 1,
+            duration: 0.8,
+            ease: "power2.out",
+          });
+        },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  useEffect(() => {
+    animateSlideContent();
+  }, [currentSlide, animateSlideContent]);
+
   useEffect(() => {
     if (!isAutoPlaying || showForm) return;
 
     const interval = setInterval(() => {
-      setCurrentSlide(prev => (prev + 1) % totalSlides);
+      setCurrentSlide((prev) => (prev + 1) % totalSlides);
     }, 5000);
 
     return () => clearInterval(interval);
   }, [isAutoPlaying, showForm, totalSlides]);
 
-  const nextSlide = () => {
-    setCurrentSlide(prev => (prev + 1) % totalSlides);
-  };
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % totalSlides);
+  }, [totalSlides]);
 
-  const prevSlide = () => {
-    setCurrentSlide(prev => (prev - 1 + totalSlides) % totalSlides);
-  };
+  const prevSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
+  }, [totalSlides]);
 
-  const goToSlide = (index) => {
+  const goToSlide = useCallback((index) => {
     setCurrentSlide(index);
-  };
+  }, []);
 
-  const handleCTAClick = (program) => {
+  const handleCTAClick = useCallback(() => {
     setShowForm(true);
     setIsAutoPlaying(false);
-  };
 
-  const handleFormSubmit = async (formData) => {
-    console.log("Form Data:", formData);
-    
-    try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      alert(`Thank you ${formData.name}! Your application for ${formData.program} has been submitted successfully.`);
-      setShowForm(false);
-      setIsAutoPlaying(true);
-    } catch (error) {
-      console.error("Submission error:", error);
-      alert("Something went wrong. Please try again.");
-    }
-  };
-
-  const closeForm = () => {
-    setShowForm(false);
-    setIsAutoPlaying(true);
-  };
+    setTimeout(() => {
+      const formModal = document.querySelector(".form-modal");
+      if (formModal) {
+        gsap.fromTo(
+          formModal,
+          { scale: 0.8, opacity: 0, y: 50 },
+          { scale: 1, opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.7)" },
+        );
+      }
+    }, 10);
+  }, []);
 
   return (
-    <section className="relative h-screen overflow-hidden">
-      
-      {/* Image Slider */}
-      <div 
+    <section ref={sectionRef} className="relative h-screen overflow-hidden">
+      <div
         className="relative w-full h-full"
         onMouseEnter={() => setIsAutoPlaying(false)}
-        onMouseLeave={() => !showForm && setIsAutoPlaying(true)}
       >
-        
         {/* Slides Container */}
         <div className="relative w-full h-full">
           {articles.map((article, index) => (
             <div
               key={article.id}
               className={`absolute inset-0 transition-all duration-700 ease-in-out ${
-                index === currentSlide 
-                  ? 'opacity-100 scale-100' 
-                  : 'opacity-0 scale-105'
+                index === currentSlide
+                  ? "opacity-100 scale-100 z-10"
+                  : "opacity-0 scale-105 z-0"
               }`}
             >
-              {/* Background Image */}
-              <div 
+              {/* Background Image with Loading */}
+              <div
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                style={{ backgroundImage: `url(${article.bgImage})` }}
+                style={{
+                  backgroundImage: `url(${article.bgImage})`,
+                  willChange: index === currentSlide ? "transform" : "auto",
+                }}
               >
-                {/* Overlay Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
+                {/* Enhanced Overlay Gradient */}
+                <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
               </div>
 
               {/* Content */}
               <div className="relative z-10 h-full flex items-center">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
                   <div className="max-w-3xl">
-                    
                     {/* Category Badge */}
-                    <div className="mb-6">
-                      <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm border border-white/30 text-white">
+                    <div className={`mb-6 category-${index}`}>
+                      <span className="inline-flex items-center px-5 py-2.5 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-md border border-white/40 text-white shadow-lg">
                         {article.category}
                       </span>
                     </div>
 
                     {/* Title */}
-                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                    <h1
+                      className={`text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight title-${index} drop-shadow-2xl`}
+                    >
                       {article.title}
                     </h1>
 
                     {/* Description */}
-                    <p className="text-xl sm:text-2xl text-white/90 mb-8 leading-relaxed max-w-2xl">
+                    <p
+                      className={`text-lg sm:text-xl lg:text-2xl text-white/95 mb-10 leading-relaxed max-w-2xl description-${index} drop-shadow-lg`}
+                    >
                       {article.description}
                     </p>
 
-                    
-                    
-
-                    {/* CTA Buttons */}
-                    <div className="flex flex-col sm:flex-row gap-4">
+                    {/* Buttons */}
+                    <div
+                      className={`flex flex-col sm:flex-row gap-4 buttons-${index}`}
+                    >
                       <button
                         onClick={() => handleCTAClick(article.program)}
-                        className="inline-flex items-center px-8 py-4 text-lg font-semibold text-black bg-white rounded-full hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                        className="group inline-flex items-center justify-center px-8 py-4 text-base sm:text-lg font-semibold text-black bg-white rounded-full hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 hover:-translate-y-1"
                       >
                         {article.ctaText}
-                        <ArrowRight className="ml-2 h-5 w-5" />
+                        <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                       </button>
-                      
+
                       <button
                         onClick={() => handleCTAClick(article.program)}
-                        className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white bg-white/20 backdrop-blur-sm border border-white/30 rounded-full hover:bg-white/30 transition-all duration-300"
+                        className="inline-flex items-center justify-center px-8 py-4 text-base sm:text-lg font-semibold text-white bg-white/20 backdrop-blur-md border-2 border-white/40 rounded-full hover:bg-white/30 hover:border-white/60 transition-all duration-300 shadow-lg"
                       >
                         Learn More
                       </button>
@@ -173,90 +292,42 @@ const ArticleSlider = () => {
 
         {/* Navigation Arrows */}
         <button
+          ref={(el) => (navArrowsRef.current[0] = el)}
           onClick={prevSlide}
-          className="absolute left-6 top-1/2 -translate-y-1/2 z-20 p-4 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 transition-all duration-200 group"
+          className="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 z-20 p-3 sm:p-4 rounded-full bg-white/20 backdrop-blur-md border border-white/40 hover:bg-white/30 hover:border-white/60 transition-all duration-300 group hover:scale-110 shadow-xl"
           aria-label="Previous slide"
         >
-          <ChevronLeft className="h-6 w-6 text-white group-hover:text-white" />
+          <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
         </button>
 
         <button
+          ref={(el) => (navArrowsRef.current[1] = el)}
           onClick={nextSlide}
-          className="absolute right-6 top-1/2 -translate-y-1/2 z-20 p-4 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 transition-all duration-200 group"
+          className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 z-20 p-3 sm:p-4 rounded-full bg-white/20 backdrop-blur-md border border-white/40 hover:bg-white/30 hover:border-white/60 transition-all duration-300 group hover:scale-110 shadow-xl"
           aria-label="Next slide"
         >
-          <ChevronRight className="h-6 w-6 text-white group-hover:text-white" />
+          <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
         </button>
 
         {/* Dots Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex space-x-3">
+        <div
+          ref={dotsRef}
+          className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-20 flex space-x-3"
+        >
           {articles.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                currentSlide === index 
-                  ? 'bg-white w-8' 
-                  : 'bg-white/50 hover:bg-white/70'
+              className={`h-2 sm:h-3 rounded-full transition-all duration-300 ${
+                currentSlide === index
+                  ? "bg-white w-8 sm:w-10 shadow-lg"
+                  : "bg-white/50 w-2 sm:w-3 hover:bg-white/70"
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}
         </div>
-
-        {/* Slide Counter */}
-        <div className="absolute top-8 right-8 z-20 text-white/80 text-sm font-medium">
-          {currentSlide + 1} / {totalSlides}
-        </div>
       </div>
-
-      {/* Registration Form Modal */}
-      {showForm && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          {/* Backdrop */}
-          <div 
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-            onClick={closeForm}
-          />
-          
-          {/* Form Container */}
-          <div className="relative z-10 w-full max-w-md transform transition-all duration-300 scale-100">
-            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
-              
-              {/* Form Header */}
-              <div className="bg-gray-600 px-6 py-4">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-xl font-bold text-white">
-                    Start Your Journey
-                  </h3>
-                  <button
-                    onClick={closeForm}
-                    className="text-white/80 hover:text-white transition-colors"
-                    aria-label="Close form"
-                  >
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  </button>
-                </div>
-                <p className="text-blue-100 text-sm mt-1">
-                  Fill out the form below to get started
-                </p>
-              </div>
-
-              {/* Form Content */}
-              <div className="p-6">
-                <StudentRegistrationForm 
-                  onSubmit={handleFormSubmit}
-                  title=""
-                  submitButtonText="Apply Now"
-                  className="shadow-none border-none bg-transparent p-0"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 };

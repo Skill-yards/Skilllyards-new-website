@@ -2,28 +2,28 @@ import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { InstagramIcon, Facebook01Icon, NewTwitterIcon, Linkedin01Icon } from "hugeicons-react";
+import {
+  InstagramIcon,
+  Facebook01Icon,
+  NewTwitterIcon,
+  Linkedin01Icon,
+} from "hugeicons-react";
 
 const Footer = () => {
   return (
     <footer className="bg-muted border-t py-8 md:py-20 px-4 md:px-20 shadow-2xl mt-auto w-full rounded-xl">
       <div className="max-w-7xl mx-auto px-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-20">
-        
-        
         <Card className="bg-transparent border-none shadow-none space-y-4 col-span-1 sm:col-span-2 lg:col-span-1">
           <CardHeader className="flex items-start gap-2 p-0">
             <CardTitle className="text-lg">
-              <img 
-                src="src/assets/logo.png" 
-                alt="logo" 
-                className="w-32 md:w-40 mb-6 md:mb-10" 
+              <img
+                src="src/assets/logo.png"
+                alt="logo"
+                className="w-32 md:w-40 mb-6 md:mb-10"
               />
             </CardTitle>
           </CardHeader>
-          <CardContent className="p-0 text-sm text-muted-foreground">
-            A collection of 100+ responsive HTML templates for your startup
-            business or side project.
-          </CardContent>
+          <CardContent className="p-0 text-sm text-muted-foreground"></CardContent>
           <div className="flex gap-4 pt-2">
             <a
               href="#"
@@ -56,38 +56,12 @@ const Footer = () => {
           </div>
         </Card>
 
-        
-        <Card className="bg-transparent border-none shadow-none">
-          <CardHeader className="p-0 mb-4">
-            <CardTitle className="text-base md:text-lg">Product</CardTitle>
-          </CardHeader>
-          <CardContent className="p-0 space-y-2 text-sm text-muted-foreground">
-            {[
-              "Overview",
-              "Pricing", 
-              "Marketplace",
-              "Features",
-              "Integrations",
-              "Marketing",
-            ].map((item) => (
-              <a
-                key={item}
-                href={`/${item.toLowerCase()}`}
-                className="hover:text-foreground block transition-colors duration-200 py-1"
-              >
-                {item}
-              </a>
-            ))}
-          </CardContent>
-        </Card>
-
-        
         <Card className="bg-transparent border-none shadow-none">
           <CardHeader className="p-0 mb-4">
             <CardTitle className="text-base md:text-lg">Company</CardTitle>
           </CardHeader>
           <CardContent className="p-0 space-y-2 text-sm text-muted-foreground">
-            {["About", "Team", "Blog", "Careers", "Contact"].map((item) => (
+            {["About", "Team", "blogs", "Careers", "Contact"].map((item) => (
               <a
                 key={item}
                 href={`/${item.toLowerCase()}`}
@@ -98,7 +72,6 @@ const Footer = () => {
             ))}
           </CardContent>
         </Card>
-
 
         <Card className="bg-transparent border-none shadow-none col-span-1 sm:col-span-2 lg:col-span-1">
           <CardHeader className="p-0 mb-4">
@@ -107,14 +80,14 @@ const Footer = () => {
           <CardContent className="p-0 space-y-4">
             <form className="space-y-3">
               <div className="flex flex-col sm:flex-row gap-2">
-                <Input 
-                  type="email" 
-                  placeholder="Email" 
-                  required 
+                <Input
+                  type="email"
+                  placeholder="Email"
+                  required
                   className="flex-1 min-w-0"
                 />
-                <Button 
-                  type="submit" 
+                <Button
+                  type="submit"
                   className="bg-blue-950 hover:bg-gray-300 hover:text-slate-950 whitespace-nowrap transition-colors duration-200"
                 >
                   Subscribe
@@ -133,8 +106,7 @@ const Footer = () => {
           </CardContent>
         </Card>
       </div>
-      
-     
+
       <div className="border-t border-muted-foreground/20 mt-8 md:mt-20 pt-6">
         <p className="text-center text-xs md:text-sm text-muted-foreground">
           © {new Date().getFullYear()} Skilllyards. All rights reserved.
