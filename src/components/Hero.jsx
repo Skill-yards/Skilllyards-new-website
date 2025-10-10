@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ArticleSlider = () => {
+const ArticleSlider = ({className}) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [showForm, setShowForm] = useState(false);
@@ -210,7 +210,7 @@ const ArticleSlider = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative h-screen overflow-hidden">
+    <section ref={sectionRef} className={`relative h-screen overflow-hidden ${className}`}>
       <div
         className="relative w-full h-full"
         onMouseEnter={() => setIsAutoPlaying(false)}
@@ -244,7 +244,7 @@ const ArticleSlider = () => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
                   <div className="max-w-3xl">
                     {/* Category Badge */}
-                    <div className={`mb-6 category-${index}`}>
+                    <div className={`mb-6 category-${index} ${className} `}>
                       <span className="inline-flex items-center px-5 py-2.5 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-md border border-white/40 text-white shadow-lg">
                         {article.category}
                       </span>

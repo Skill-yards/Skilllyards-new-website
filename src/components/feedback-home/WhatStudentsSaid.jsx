@@ -10,7 +10,7 @@ import tushar from "../../assets/Students/tushar.webp";
 import ayush from "../../assets/Students/ayush.webp";
 import sachin from "../../assets/Students/sachin.webp";
 
-export default function WhatStudentsSaid() {
+export default function WhatStudentsSaid({className}) {
   const reviews = useMemo(  
     () => [
       {
@@ -74,13 +74,13 @@ export default function WhatStudentsSaid() {
 
   return (
     <section
-      className="py-12 px-4 lg:px-8"
+      className={`py-12 px-4 lg:px-8 ${className}`}
       style={{ background: COLORS.bg }}
     >
-      <div className="max-w-6xl mx-auto">
+      <div className={`max-w-6xl mx-auto ${className}`}>
         <div className="text-center mb-8">
           <h2
-            className="font-serif font-bold text-2xl md:text-3xl tracking-tight "
+            className={`font-serif font-bold text-2xl md:text-3xl tracking-tight ${className}`} 
             style={{ color: COLORS.text }}
           >
             Hear from Our Students
@@ -94,7 +94,7 @@ export default function WhatStudentsSaid() {
           </p>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-8">
+        <div className={`flex flex-col lg:flex-row gap-8 ${className}`}>
           <div className="w-full lg:w-[68%]">
             <TestimonialCarousel items={reviews} />
 

@@ -3,9 +3,11 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Instagram, Twitter, Youtube } from "lucide-react";
 
+
 gsap.registerPlugin(ScrollTrigger);
 
 const ContactUs = () => {
+
   const containerRef = useRef();
   const leftContentRef = useRef();
   const formRef = useRef();
