@@ -1,21 +1,21 @@
-import forelsket from '../assets/companies/forelsket.png';
-import s7c from '../assets/companies/s7c.png';
-import sndigitech from '../assets/companies/sndigitech.webp';
-import webmobril from '../assets/companies/webmobril.png';
-import attrix from '../assets/companies/attrix1.svg';
-import Infosys from '../assets/companies/infosys.webp';
-import Tcl from '../assets/companies/tcl.webp';
-import genpact from '../assets/companies/genpact.webp';
+import forelsket from "../assets/companies/forelsket.png";
+import s7c from "../assets/companies/s7c.png";
+import sndigitech from "../assets/companies/sndigitech.webp";
+import webmobril from "../assets/companies/webmobril.png";
+import attrix from "../assets/companies/attrix1.svg";
+import Infosys from "../assets/companies/infosys.webp";
+import Tcl from "../assets/companies/tcl.webp";
+import genpact from "../assets/companies/genpact.webp";
 
 const companyLogos = [
-  { src: forelsket, name: 'Forelsket' },
-  { src: s7c, name: 'S7C' },
-  { src: sndigitech, name: 'SN Digitech' },
-  { src: webmobril, name: 'Webmobril' },
-  { src: attrix, name: 'Attrix' },
-  { src: Infosys, name: 'Infosys' },
-  { src: Tcl, name: 'TCL' },
-  { src: genpact, name: 'Genpact' },
+  { src: forelsket, name: "Forelsket" },
+  { src: s7c, name: "S7C" },
+  { src: sndigitech, name: "SN Digitech" },
+  { src: webmobril, name: "Webmobril" },
+  { src: attrix, name: "Attrix" },
+  { src: Infosys, name: "Infosys" },
+  { src: Tcl, name: "TCL" },
+  { src: genpact, name: "Genpact" },
 ];
 
 const OurPartner = () => (
@@ -41,7 +41,9 @@ const OurPartner = () => (
                   src={src}
                   alt={`${name} logo`}
                   className="w-24 h-24 object-contain rounded-xl drop-shadow-lg animate-fadeIn"
-                  style={{ animationDelay: `${(i % companyLogos.length) * 0.15}s` }}
+                  style={{
+                    animationDelay: `${(i % companyLogos.length) * 0.15}s`,
+                  }}
                 />
               </div>
               <figcaption className="mt-3 px-3 py-1 bg-indigo-100 text-indigo-700 text-xs font-semibold rounded-full shadow group-hover:bg-indigo-200 group-hover:text-indigo-900 transition-colors duration-200">

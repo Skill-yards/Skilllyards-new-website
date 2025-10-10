@@ -1,7 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import { BadgeCheck, Users, TrendingUp, Briefcase } from "lucide-react"; // run: npm i lucide-react
 
-function StatItem({ value, label, icon, suffix = "+", prefix = "", isPercent = false }) {
+function StatItem({
+  value,
+  label,
+  icon,
+  suffix = "+",
+  prefix = "",
+  isPercent = false,
+}) {
   const [count, setCount] = useState(0);
   const [hasAnimated, setHasAnimated] = useState(false);
   const ref = useRef(null);
@@ -25,7 +32,7 @@ function StatItem({ value, label, icon, suffix = "+", prefix = "", isPercent = f
           }, step);
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.5 },
     );
     if (ref.current) observer.observe(ref.current);
 
