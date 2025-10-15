@@ -4,19 +4,19 @@ import Stats from '@/components/Stats';
 import WhatStudentsSaid from '@/components/feedback-home/WhatStudentsSaid';
 import useScrollAnimation from '../components/hooks/useScrollAnimation';
 import WhyChooseSkillyards from '@/components/whyChooseSkillyards';
-
+import UpcomingBatches from '@/components/UpcomingBatches';
 
 const Home = () => {
   useScrollAnimation(".reveal");
  
   return (
     <>
-      <Hero  className={"reveal"}
-      />
+      <Hero  className={"reveal"} />
       <OurPartner className ={"reveal"} />
       <WhatStudentsSaid  className={"reveal"}/>
-      <Stats />
-      <WhyChooseSkillyards/>
+      <Stats className={"reveal"} />
+      <WhyChooseSkillyards className={"reveal"}/>
+      <UpcomingBatches className={"reveal"}/>
     </>
   );
 };

@@ -3,65 +3,62 @@ import { Play } from "lucide-react";
 
 const AboutUs = () => {
   const stats = [
-    { number: "143,000+", label: "paying customer countries" },
-    { number: "$100B+", label: "revenue earned by Klaviyo users to date" },
-    { number: "1,500+", label: "team members globally" },
-    { number: "60B", label: "data points processed daily" },
+    { number: "1st", label: "IT training center in Agra" },
+    { number: "50+", label: "students graduated" },
+    { number: "200+", label: "corporate hiring partners" },
+    { number: "100%", label: "placement support for eligible students" },
   ];
 
   const features = [
-    "Activate your data in real-time to deliver larger, personalized and better-targeted campaigns",
-    "Connect with customers through a seamless email, SMS, mobile push, and web experiences",
-    "Scale your marketing with built-in AI, automation, predictive analytics, and benchmarks",
-    "Grow your audience, keep customer lifetime value, and over your brand voice",
+    "Project-based, industry-driven curriculum",
+    "Work/study degree programs with in-house training",
+    "Guaranteed job opportunities post completion",
+    "Expert instructors with real client experience",
+    "Focus on modern IT, programming, and soft skills",
+    "Active clubs for language, public speaking, and leadership",
   ];
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
-      {/* Hero Section */}
+    <div className="min-h-screen bg-gradient-to-tr from-[#10151f] via-[#192233] to-[#0c0c0c] text-white">
       <section className="max-w-7xl mx-auto px-6 py-16">
-        <div className="mb-12">
-          <p className="text-gray-400 text-sm mb-4 uppercase tracking-wider">
-            about us
-          </p>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            143,000+ companies use Klaviyo to power smarter
-            <br />
-            digital relationships
+        <div className="mb-12 flex flex-col items-center text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight drop-shadow-md mt-6">
+            Shaping IT careers in Agra—
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-400">
+              Skillyards Where learning meets opportunity
+            </span>
           </h1>
         </div>
 
-        {/* Video Section */}
-        <div className="relative rounded-2xl overflow-hidden mb-16 group cursor-pointer">
-          <img
-            src="/api/placeholder/1200/600"
-            alt="Team collaboration"
-            className="w-full h-[400px] md:h-[500px] object-cover"
-          />
-          <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-all duration-300" />
-          <button className="absolute left-8 bottom-8 w-12 h-12 bg-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-            <Play className="w-5 h-5 text-black ml-0.5" fill="black" />
-          </button>
+        <div className="relative rounded-3xl overflow-hidden mb-16 shadow-xl mx-auto max-w-3xl">
+          <video
+            className="w-full h-[300px] md:h-[420px] object-cover rounded-3xl border-4 border-orange-400/40 shadow"
+            controls
+            autoPlay
+            muted
+            poster="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&w=800"
+          >
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+          </video>
         </div>
 
         {/* Two Column Layout */}
-        <div className="grid md:grid-cols-2 gap-16 mb-20">
+        <div className="grid md:grid-cols-2 gap-12 lg:gap-24 mb-20">
           {/* Left Column - Features */}
-          <div>
-            <h2 className="text-2xl md:text-3xl font-bold mb-8">
-              Intelligent marketing
+          <div className="space-y-8">
+            <h2 className="text-2xl md:text-3xl font-black mb-4">
+              Practical learning,
+              <span className="text-orange-400"> real results</span>
               <br />
-              automation powered by
-              <br />
-              customer data
+              <span className="font-medium text-blue-200">Your career starts here</span>
             </h2>
             <ul className="space-y-4">
               {features.map((feature, index) => (
                 <li
                   key={index}
-                  className="flex items-start text-gray-300 text-sm leading-relaxed"
+                  className="flex items-start text-gray-200 text-base"
                 >
-                  <span className="mr-3 mt-1.5 flex-shrink-0">→</span>
+                  <span className="mr-4 mt-2 text-orange-400 font-black text-xl">•</span>
                   <span>{feature}</span>
                 </li>
               ))}
@@ -70,39 +67,28 @@ const AboutUs = () => {
 
           {/* Right Column - Story */}
           <div>
-            <h3 className="text-xl font-bold mb-6">How it started</h3>
-            <div className="space-y-4 text-gray-300 text-sm leading-relaxed">
+            <div className="bg-white/10 border-l-4 border-orange-400 rounded-xl p-8 shadow-lg space-y-4 text-gray-200 text-base">
+              <h3 className="text-xl font-extrabold mb-2 text-orange-300">How it started</h3>
               <p>
-                As the first IT training center in Agra, Skillyards is committed
-                to building and making industry-ready professionals out of local
-                talent. Our extensive work/study degree programs offer unique
-                in-house training with guaranteed job opportunities post
-                completion. We teach skills that various employers require.
-                Unlike traditional learning, we teach through modern,
-                industry-driven curriculum. Expert instructors guide students on
-                live client projects where they learn through doing. With Club,
-                students go beyond learning languages and public speaking. They
-                acquire and develop these soft skills ensuring their holistic
-                growth. Change the narrative of Agra's IT landscape by joining
-                Skillyards. We equip you with confidence and real-world
-                expertise.
+                Founded in Agra in 2022, Skillyards was born out of a simple mission: to bridge the gap between education and employability. Our vision is to empower local youth with real-world IT skills—coding, teamwork, and communication—that companies genuinely value. Instead of rote theory, we deliver hands-on learning through active mentorship, client projects, and industry-aligned coursework.
               </p>
-              <p className="italic">—Andreas Bialecki, Klaviyo co-founder</p>
+              <p>
+                Skillyards is proud to be Agra’s pioneer in structured work/study degree programs, collaborating with regional employers to guarantee placement support for every successful student. Our unique clubs focus on soft skills so graduates leave not just job-ready but future-ready.
+              </p>
+              <p className="italic text-orange-200">—Skillyards Team</p>
             </div>
           </div>
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="border-l-2 border-orange-500 pl-6 py-4 hover:border-orange-400 transition-colors duration-300"
+              className="rounded-2xl bg-gradient-to-tr from-blue-900/80 to-blue-700/70 border-l-4 border-orange-400 pl-7 pr-6 py-7 hover:shadow-2xl transition-all duration-300"
             >
-              <div className="text-4xl md:text-5xl font-bold mb-2">
-                {stat.number}
-              </div>
-              <div className="text-gray-400 text-sm">{stat.label}</div>
+              <div className="text-3xl md:text-4xl font-black mb-1 text-orange-300">{stat.number}</div>
+              <div className="text-gray-200 text-base">{stat.label}</div>
             </div>
           ))}
         </div>
@@ -112,3 +98,4 @@ const AboutUs = () => {
 };
 
 export default AboutUs;
+
