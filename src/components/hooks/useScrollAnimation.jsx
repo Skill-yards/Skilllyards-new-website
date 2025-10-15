@@ -19,8 +19,8 @@ const useScrollAnimation = (selector = ".reveal", options = {}) => {
         ease: "power3.out",
         scrollTrigger: {
           trigger: el,
-          start: options.start || "top 80%",
-          end: options.end || "bottom 60%",
+          start: options.start || "top 90%",
+          end: options.end || "bottom 70%",
           toggleActions: "play none none reverse",
           scrub: options.scrub || false,
           // markers: true, // uncomment for debugging

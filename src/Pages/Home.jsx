@@ -15,8 +15,8 @@ const Home = () => {
       />
       <OurPartner className ={"reveal"} />
       <WhatStudentsSaid  className={"reveal"}/>
-      <Stats />
-      <WhyChooseSkillyards/>
+      <Stats className={"reveal"} />
+      <WhyChooseSkillyards />
     </>
   );
 };

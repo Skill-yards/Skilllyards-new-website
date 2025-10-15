@@ -13,11 +13,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const navItems = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Contact Us", href: "/contact" },
-  ];
+  
 
   const dropdownMenus = [
     {
@@ -36,17 +32,11 @@ const Navbar = () => {
                    hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.55)] 
                    transition-all duration-500 ease-in-out"
       >
+        
         <div className="container mx-auto flex items-center justify-between px-6 py-3">
-          {/* Logo */}
-          <div className="flex items-center gap-2">
-            <img
-              src="src/assets/logo.png"
-              alt="Logo"
-              className="h-10 w-auto drop-shadow-lg"
-            />
-          </div>
+          <span><h1>Skillyards</h1></span>
+         
 
-          {/* Desktop Navigation */}
           <div className="hidden md:block">
             <NavigationMenu>
               <NavigationMenuList className="flex gap-4">
@@ -66,8 +56,8 @@ const Navbar = () => {
                     <NavigationMenuTrigger
                       className="px-5 py-2 text-white font-medium rounded-full 
                                  bg-gradient-to-r from-blue-800/60 to-blue-950/60 
-                                 hover:from-blue-700/60 hover:to-blue-800/60 
-                                 transition-all duration-300"
+                                 hover:from-blue-700/60"
+                                
                     >
                       {menu.name}
                     </NavigationMenuTrigger>
@@ -133,44 +123,7 @@ const Navbar = () => {
                 </button>
               </SheetTrigger>
 
-              <SheetContent
-                side="right"
-                className="bg-white/10 backdrop-blur-xl border-l border-white/20 
-                           w-[300px] sm:w-[350px] text-white"
-              >
-                <div className="flex flex-col space-y-4 mt-10">
-                  {navItems.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className="px-4 py-3 rounded-full hover:bg-white/20 transition-all duration-300"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {item.name}
-                    </a>
-                  ))}
-
-                  {dropdownMenus.map((menu) => (
-                    <div key={menu.name} className="border-t border-white/20 pt-4">
-                      <h3 className="px-4 py-2 text-center text-lg font-semibold bg-gradient-to-r from-blue-800/50 to-blue-950/50 rounded-full">
-                        {menu.name}
-                      </h3>
-                      <div className="ml-4 mt-2 space-y-2">
-                        {menu.items.map((item) => (
-                          <a
-                            key={item.name}
-                            href={item.href}
-                            className="block px-4 py-2 text-sm hover:bg-white/20 rounded-lg transition-all duration-300"
-                            onClick={() => setIsOpen(false)}
-                          >
-                            {item.name}
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </SheetContent>
+            
             </Sheet>
           </div>
         </div>

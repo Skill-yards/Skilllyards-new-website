@@ -1,4 +1,6 @@
-import { motion } from "framer-motion";
+"use client";
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 import { Play, Pause } from "lucide-react";
 import { COLORS } from "./colors";
 import { ArrowButton } from "./ArrowButton";
@@ -9,11 +11,45 @@ export const TestimonialCarousel = ({ items }) => {
   const visible = 2; // desktop visible cards
   const { index, auto, toggleAuto, next, prev, maxIndex } = useCarousel(
     items.length,
-    visible,
+    visible
   );
+
+  const containerRef = useRef(null);
+  const xOffset = 50; // each move = 50% (for 2 cards per view)
+
+  // Animate on index change
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    gsap.to(el, {
+      xPercent: -index * xOffset,
+      duration: 0.9,
+      ease: "power3.inOut",
+    });
+  }, [index]);
+
+  // Add a subtle auto pulse effect when auto is ON
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    if (auto) {
+      gsap.to(el, {
+        scale: 1.02,
+        duration: 1,
+        yoyo: true,
+        repeat: -1,
+        ease: "sine.inOut",
+      });
+    } else {
+      gsap.killTweensOf(el);
+      gsap.to(el, { scale: 1, duration: 0.3 });
+    }
+  }, [auto]);
 
   return (
     <div className="relative">
+      {/* Top Controls */}
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
           <button
@@ -38,23 +74,20 @@ export const TestimonialCarousel = ({ items }) => {
         </div>
         <div className="flex gap-2">
           <ArrowButton dir="left" onClick={prev} disabled={index === 0} />
-          <ArrowButton
-            dir="right"
-            onClick={next}
-            disabled={index === maxIndex}
-          />
+          <ArrowButton dir="right" onClick={next} disabled={index === maxIndex} />
         </div>
       </div>
 
+      {/* Carousel Track */}
       <div
         className="overflow-hidden"
-        onMouseEnter={() => toggleAuto(false)} // Pause on hover
-        onMouseLeave={() => toggleAuto(true)} // Resume on leave
+        onMouseEnter={() => toggleAuto(false)}
+        onMouseLeave={() => toggleAuto(true)}
       >
-        <motion.div
-          className="flex gap-4"
-          animate={{ x: `-${index * 50}%` }} // 2 cards per view
-          transition={{ type: "spring", stiffness: 120, damping: 18 }}
+        <div
+          ref={containerRef}
+          className="flex gap-4 will-change-transform"
+          style={{ transform: "translateX(0%)" }}
         >
           {items.map((it, idx) => (
             <div
@@ -64,7 +97,7 @@ export const TestimonialCarousel = ({ items }) => {
               <QuoteCard info={it} truncate />
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </div>
   );
