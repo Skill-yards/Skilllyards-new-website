@@ -9,11 +9,10 @@ import {
   NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Link } from "react-router-dom"; 
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
-  
 
   const dropdownMenus = [
     {
@@ -32,10 +31,20 @@ const Navbar = () => {
                    hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.55)] 
                    transition-all duration-500 ease-in-out"
       >
-        
         <div className="container mx-auto flex items-center justify-between px-6 py-3">
-          <span><h1>Skillyards</h1></span>
-         
+                    <Link
+            to="/"
+            className="flex items-center gap-2 cursor-pointer group"
+          >
+            <img
+              src="/logo.png" 
+              alt="Skillyards Logo"
+              className="w-10 h-10 rounded-full object-contain transition-transform duration-300 group-hover:scale-105"
+            />
+            <span className="text-xl font-bold text-black group-hover:text-blue-800 transition-colors">
+              Skillyards
+            </span>
+          </Link>
 
           <div className="hidden md:block">
             <NavigationMenu>
@@ -57,7 +66,6 @@ const Navbar = () => {
                       className="px-5 py-2 text-white font-medium rounded-full 
                                  bg-gradient-to-r from-blue-800/60 to-blue-950/60 
                                  hover:from-blue-700/60"
-                                
                     >
                       {menu.name}
                     </NavigationMenuTrigger>
@@ -69,7 +77,7 @@ const Navbar = () => {
                         <NavigationMenuLink
                           key={item.name}
                           href={item.href}
-                          className="block px-4 py-2 text-sm text-black hover:bg-blue-600 
+                          className="block px-4 py-2 text-sm text-black hover:bg-blue-600 hover:text-white 
                                      rounded-lg transition duration-300"
                         >
                           {item.name}
@@ -78,6 +86,7 @@ const Navbar = () => {
                     </NavigationMenuContent>
                   </NavigationMenuItem>
                 ))}
+
                 <NavigationMenuItem>
                   <NavigationMenuLink
                     href="/blogs"
@@ -104,7 +113,7 @@ const Navbar = () => {
                   <NavigationMenuLink
                     href="/contact"
                     className="px-5 py-2 text-black font-medium rounded-full 
-                               hover:bg-white/20  hover:text-blue-800 
+                               hover:bg-white/20 hover:text-blue-800 
                                transition-all duration-300"
                   >
                     Contact Us
@@ -118,12 +127,20 @@ const Navbar = () => {
           <div className="md:hidden">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
-                <button className="p-2 text-black  hover:text-blue-800  transition-colors">
+                <button className="p-2 text-black hover:text-blue-800 transition-colors">
                   {isOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
               </SheetTrigger>
-
-            
+              <SheetContent side="right" className="p-6 bg-white/70 backdrop-blur-lg">
+                <div className="flex flex-col gap-4">
+                  <a href="/" className="text-lg font-medium text-black hover:text-blue-700">Home</a>
+                  <a href="/programs/bca" className="text-lg font-medium text-black hover:text-blue-700">BCA Programs</a>
+                  <a href="/programs/bba" className="text-lg font-medium text-black hover:text-blue-700">BBA Programs</a>
+                  <a href="/blogs" className="text-lg font-medium text-black hover:text-blue-700">Blogs</a>
+                  <a href="/about" className="text-lg font-medium text-black hover:text-blue-700">About</a>
+                  <a href="/contact" className="text-lg font-medium text-black hover:text-blue-700">Contact Us</a>
+                </div>
+              </SheetContent>
             </Sheet>
           </div>
         </div>
