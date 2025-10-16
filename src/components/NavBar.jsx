@@ -9,15 +9,10 @@ import {
   NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Link } from "react-router-dom"; 
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
-  const navItems = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Contact Us", href: "/contact" },
-  ];
 
   const dropdownMenus = [
     {
@@ -37,16 +32,20 @@ const Navbar = () => {
                    transition-all duration-500 ease-in-out"
       >
         <div className="container mx-auto flex items-center justify-between px-6 py-3">
-          {/* Logo */}
-          <div className="flex items-center gap-2">
+                    <Link
+            to="/"
+            className="flex items-center gap-2 cursor-pointer group"
+          >
             <img
-              src="src/assets/logo.png"
-              alt="Logo"
-              className="h-10 w-auto drop-shadow-lg"
+              src="/logo.png" 
+              alt="Skillyards Logo"
+              className="w-10 h-10 rounded-full object-contain transition-transform duration-300 group-hover:scale-105"
             />
-          </div>
+            <span className="text-xl font-bold text-black group-hover:text-blue-800 transition-colors">
+              Skillyards
+            </span>
+          </Link>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:block">
             <NavigationMenu>
               <NavigationMenuList className="flex gap-4">
@@ -66,8 +65,7 @@ const Navbar = () => {
                     <NavigationMenuTrigger
                       className="px-5 py-2 text-white font-medium rounded-full 
                                  bg-gradient-to-r from-blue-800/60 to-blue-950/60 
-                                 hover:from-blue-700/60 hover:to-blue-800/60 
-                                 transition-all duration-300"
+                                 hover:from-blue-700/60"
                     >
                       {menu.name}
                     </NavigationMenuTrigger>
@@ -79,7 +77,7 @@ const Navbar = () => {
                         <NavigationMenuLink
                           key={item.name}
                           href={item.href}
-                          className="block px-4 py-2 text-sm text-black hover:bg-blue-600 
+                          className="block px-4 py-2 text-sm text-black hover:bg-blue-600 hover:text-white 
                                      rounded-lg transition duration-300"
                         >
                           {item.name}
@@ -88,6 +86,7 @@ const Navbar = () => {
                     </NavigationMenuContent>
                   </NavigationMenuItem>
                 ))}
+
                 <NavigationMenuItem>
                   <NavigationMenuLink
                     href="/blogs"
@@ -114,7 +113,7 @@ const Navbar = () => {
                   <NavigationMenuLink
                     href="/contact"
                     className="px-5 py-2 text-black font-medium rounded-full 
-                               hover:bg-white/20  hover:text-blue-800 
+                               hover:bg-white/20 hover:text-blue-800 
                                transition-all duration-300"
                   >
                     Contact Us
@@ -128,50 +127,18 @@ const Navbar = () => {
           <div className="md:hidden">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
-                <button className="p-2 text-black  hover:text-blue-800  transition-colors">
+                <button className="p-2 text-black hover:text-blue-800 transition-colors">
                   {isOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
               </SheetTrigger>
-
-              <SheetContent
-                side="right"
-                className="bg-white/10 backdrop-blur-xl border-l border-white/20 
-                           w-[300px] sm:w-[350px] text-white"
-              >
-                <div className="flex flex-col space-y-4 mt-10">
-                  {navItems.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className="px-4 py-3 rounded-full hover:bg-white/20 transition-all duration-300"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {item.name}
-                    </a>
-                  ))}
-
-                  {dropdownMenus.map((menu) => (
-                    <div
-                      key={menu.name}
-                      className="border-t border-white/20 pt-4"
-                    >
-                      <h3 className="px-4 py-2 text-center text-lg font-semibold bg-gradient-to-r from-blue-800/50 to-blue-950/50 rounded-full">
-                        {menu.name}
-                      </h3>
-                      <div className="ml-4 mt-2 space-y-2">
-                        {menu.items.map((item) => (
-                          <a
-                            key={item.name}
-                            href={item.href}
-                            className="block px-4 py-2 text-sm hover:bg-white/20 rounded-lg transition-all duration-300"
-                            onClick={() => setIsOpen(false)}
-                          >
-                            {item.name}
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
+              <SheetContent side="right" className="p-6 bg-white/70 backdrop-blur-lg">
+                <div className="flex flex-col gap-4">
+                  <a href="/" className="text-lg font-medium text-black hover:text-blue-700">Home</a>
+                  <a href="/programs/bca" className="text-lg font-medium text-black hover:text-blue-700">BCA Programs</a>
+                  <a href="/programs/bba" className="text-lg font-medium text-black hover:text-blue-700">BBA Programs</a>
+                  <a href="/blogs" className="text-lg font-medium text-black hover:text-blue-700">Blogs</a>
+                  <a href="/about" className="text-lg font-medium text-black hover:text-blue-700">About</a>
+                  <a href="/contact" className="text-lg font-medium text-black hover:text-blue-700">Contact Us</a>
                 </div>
               </SheetContent>
             </Sheet>

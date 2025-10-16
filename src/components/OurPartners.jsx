@@ -8,6 +8,7 @@ import Infosys from "../assets/companies/infosys.webp";
 import Tcl from "../assets/companies/tcl.webp";
 import genpact from "../assets/companies/genpact.webp";
 
+
 const companyLogos = [
   { src: forelsket, name: "Forelsket" },
   { src: s7c, name: "S7C" },
@@ -19,12 +20,10 @@ const companyLogos = [
   { src: genpact, name: "Genpact" },
 ];
 
-const OurPartner = ({ className }) => (
-  <section
-    className={`relative py-20 overflow-hidden bg-gradient-to-br from-[#e0f7fa] via-white to-[#f1f8e9] ${className}`}
-  >
+const OurPartner = ({className}) => (
+  <section className={`relative py-20 overflow-hidden bg-gradient-to-br from-[#2b3769] via-white to-[#578dca] ${className}`}>
     {/* Decorative gradient orbs */}
-    <div className="absolute top-[-10rem] right-[-10rem] w-[400px] h-[400px] bg-gradient-to-r from-[#00bcd4]/40 to-[#1de9b6]/30 blur-[120px] rounded-full animate-pulse" />
+    <div className="absolute top-[10rem] right-[10rem] w-[400px] h-[400px] bg-gradient-to-r from-[#00bcd4]/40 to-[#1de9b6]/30 blur-[120px] rounded-full animate-pulse" />
     <div className="absolute bottom-[-8rem] left-[-8rem] w-[300px] h-[300px] bg-gradient-to-r from-[#f48fb1]/30 to-[#fdd835]/30 blur-[100px] rounded-full animate-pulse" />
 
     <div className="relative z-10 text-center">
@@ -43,7 +42,7 @@ const OurPartner = ({ className }) => (
           className="flex items-center"
           style={{
             width: "200%",
-            animation: "scroll 30s linear infinite",
+            animation: "scroll 25s linear infinite",
           }}
         >
           {[...companyLogos, ...companyLogos].map(({ src, name }, i) => (
@@ -51,8 +50,8 @@ const OurPartner = ({ className }) => (
               key={name + i}
               className={`group relative min-w-[150px] sm:min-w-[180px] mx-8 flex flex-col items-center justify-center cursor-pointer hover:scale-110 transition-transform duration-300 ease-out ${className}`}
             >
-              {/* Glow Ring */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-[#00bcd4]/30 to-[#1de9b6]/30 opacity-0 group-hover:opacity-100 blur-lg transition-all duration-500" />
+             
+              
 
               {/* Logo Container */}
               <div className="relative bg-white/70 backdrop-blur-xl rounded-2xl p-4 shadow-lg ring-1 ring-white/30 transition-all duration-300 group-hover:shadow-[0_0_10px_rgba(0,188,212,0.4)]">

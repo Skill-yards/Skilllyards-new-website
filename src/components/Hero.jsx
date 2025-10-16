@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { ChevronLeft, ChevronRight, ArrowRight, X } from "lucide-react";
-
+import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { BubbleBackground } from "./animate-ui/components/backgrounds/bubble";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -23,8 +23,6 @@ const ArticleSlider = ({ className }) => {
       description:
         "Learn modern web development with React, Node.js, and cutting-edge technologies. Build real-world projects and become job-ready.",
       category: "Development",
-      bgImage:
-        "https://images.unsplash.com/photo-1517148815978-75f6acaaf32c?q=80&w=1170&auto=format&fit=crop",
       ctaText: "Start Learning",
       program: "BCA",
     },
@@ -34,8 +32,6 @@ const ArticleSlider = ({ className }) => {
       description:
         "Transform your career with comprehensive digital marketing skills. Master SEO, social media, content marketing, and analytics.",
       category: "Marketing",
-      bgImage:
-        "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&w=1920&q=80",
       ctaText: "Join Program",
       program: "BBA",
     },
@@ -45,8 +41,6 @@ const ArticleSlider = ({ className }) => {
       description:
         "Discover the path to becoming a data analyst. Learn Python, SQL, visualization tools, and land your dream job in tech.",
       category: "Analytics",
-      bgImage:
-        "https://images.pexels.com/photos/185576/pexels-photo-185576.jpeg",
       ctaText: "Explore Path",
       program: "BCA",
     },
@@ -60,19 +54,19 @@ const ArticleSlider = ({ className }) => {
     tl.fromTo(
       `.category-${currentSlide}`,
       { opacity: 0, y: 30, scale: 0.8 },
-      { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "back.out(1.7)" },
+      { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "back.out(1.7)" }
     )
       .fromTo(
         `.title-${currentSlide}`,
         { opacity: 0, x: -60 },
         { opacity: 1, x: 0, duration: 0.8, ease: "power3.out" },
-        "-=0.3",
+        "-=0.3"
       )
       .fromTo(
         `.description-${currentSlide}`,
         { opacity: 0, y: 30 },
         { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
-        "-=0.4",
+        "-=0.4"
       )
       .fromTo(
         `.buttons-${currentSlide} > *`,
@@ -84,7 +78,7 @@ const ArticleSlider = ({ className }) => {
           ease: "power2.out",
           stagger: 0.1,
         },
-        "-=0.3",
+        "-=0.3"
       );
   }, [currentSlide]);
 
@@ -94,10 +88,7 @@ const ArticleSlider = ({ className }) => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         navArrowsRef.current.filter(Boolean),
-        {
-          opacity: 0,
-          x: (index) => (index === 0 ? -50 : 50),
-        },
+        { opacity: 0, x: (index) => (index === 0 ? -50 : 50) },
         {
           opacity: 1,
           x: 0,
@@ -105,14 +96,14 @@ const ArticleSlider = ({ className }) => {
           delay: 0.5,
           ease: "power3.out",
           stagger: 0.2,
-        },
+        }
       );
 
       if (dotsRef.current) {
         gsap.fromTo(
           dotsRef.current,
           { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.8, delay: 0.7, ease: "power2.out" },
+          { opacity: 1, y: 0, duration: 0.8, delay: 0.7, ease: "power2.out" }
         );
       }
 
@@ -120,7 +111,7 @@ const ArticleSlider = ({ className }) => {
         gsap.fromTo(
           counterRef.current,
           { opacity: 0, x: 20 },
-          { opacity: 1, x: 0, duration: 0.8, delay: 0.9, ease: "power2.out" },
+          { opacity: 1, x: 0, duration: 0.8, delay: 0.9, ease: "power2.out" }
         );
       }
 
@@ -203,7 +194,7 @@ const ArticleSlider = ({ className }) => {
         gsap.fromTo(
           formModal,
           { scale: 0.8, opacity: 0, y: 50 },
-          { scale: 1, opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.7)" },
+          { scale: 1, opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.7)" }
         );
       }
     }, 10);
@@ -229,25 +220,20 @@ const ArticleSlider = ({ className }) => {
                   : "opacity-0 scale-105 z-0"
               }`}
             >
-              {/* Background Image with Loading */}
-              <div
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                style={{
-                  backgroundImage: `url(${article.bgImage})`,
-                  willChange: index === currentSlide ? "transform" : "auto",
-                }}
-              >
-                {/* Enhanced Overlay Gradient */}
+              
+             
+              <div className="absolute inset-0 overflow-hidden w-full">
+                <BubbleBackground />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
               </div>
 
-              {/* Content */}
+            
               <div className="relative z-10 h-full flex items-center">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
                   <div className="max-w-3xl">
-                    {/* Category Badge */}
-                    <div className={`mb-6 category-${index} ${className} `}>
+                    
+                    <div className={`mb-6 category-${index}`}>
                       <span className="inline-flex items-center px-5 py-2.5 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-md border border-white/40 text-white shadow-lg">
                         {article.category}
                       </span>
@@ -255,25 +241,23 @@ const ArticleSlider = ({ className }) => {
 
                     {/* Title */}
                     <h1
-                      className={`text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight title-${index} drop-shadow-2xl`}
+                      className={`text-4xl sm:text-5xl lg:text-4xl xl:text-5xl font-bold text-white mb-6 leading-tight title-${index} drop-shadow-2xl`}
                     >
                       {article.title}
                     </h1>
 
                     {/* Description */}
                     <p
-                      className={`text-lg sm:text-xl lg:text-2xl text-white/95 mb-10 leading-relaxed max-w-2xl description-${index} drop-shadow-lg`}
+                      className={`text-lg sm:text-xl lg:text-xl text-white/95 mb-10 leading-relaxed max-w-2xl description-${index} drop-shadow-lg`}
                     >
                       {article.description}
                     </p>
 
                     {/* Buttons */}
-                    <div
-                      className={`flex flex-col sm:flex-row gap-4 buttons-${index}`}
-                    >
+                    <div className={`flex flex-col sm:flex-row gap-4 bottom-9 buttons-${index}`}>
                       <button
                         onClick={() => handleCTAClick(article.program)}
-                        className="group inline-flex items-center justify-center px-8 py-4 text-base sm:text-lg font-semibold text-black bg-white rounded-full hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 hover:-translate-y-1"
+                        className="group inline-flex items-center justify-center px-5 py-4 text-base sm:text-md font-semibold text-black bg-white rounded-full hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 hover:-translate-y-1"
                       >
                         {article.ctaText}
                         <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
