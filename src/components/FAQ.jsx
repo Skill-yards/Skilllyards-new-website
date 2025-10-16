@@ -20,7 +20,8 @@ const FAQ_ITEMS = [
       "Skillyards emphasizes project-based learning, with students working on real client and live industry projects. You also benefit from hackathons, open-source contributions, and mentorship, building both your portfolio and job-ready skills before graduation.",
   },
   {
-    question: "Are there networking and professional development sessions for students?",
+    question:
+      "Are there networking and professional development sessions for students?",
     answer:
       "Absolutely. Through the Skillyards Club, students engage in networking events, personality development workshops, guest lectures, and leadership sessions, often led by industry experts to help them grow personally and professionally.",
   },

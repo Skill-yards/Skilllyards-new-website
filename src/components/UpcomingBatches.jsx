@@ -8,7 +8,7 @@ const upcomingBatches = [
     demo: "October 15, 2025",
     ctaLink: "/register-fullstack",
     workshop: "Building MERN Projects - Free Webinar (Oct 20)",
-    image: fullstack
+    image: fullstack,
   },
   {
     title: "Frontend with React.js",
@@ -16,7 +16,7 @@ const upcomingBatches = [
     demo: "October 28, 2025",
     ctaLink: "/register-react",
     workshop: "UI/UX Crash Course : Free Workshop for Beginners",
-    image: react
+    image: react,
   },
   {
     title: "SQL & Database Foundations",
@@ -36,9 +36,11 @@ const purpleConfig = {
   accent: "bg-purple-100 text-purple-800",
 };
 
-const UpcomingBatches = ({className}) => {
+const UpcomingBatches = ({ className }) => {
   return (
-    <section className={`max-w-6xl mx-auto mt-16 px-4 sm:px-6 lg:px-8 ${className}`}>
+    <section
+      className={`max-w-6xl mx-auto mt-16 px-4 sm:px-6 lg:px-8 ${className}`}
+    >
       <h2 className="text-4xl font-bold text-center mb-12 text-neutral-800 drop-shadow-lg">
         Upcoming Batches & Events
       </h2>
@@ -62,19 +64,25 @@ const UpcomingBatches = ({className}) => {
                 <span className="inline-block px-3 py-1 rounded-full font-semibold text-xs bg-purple-200 text-purple-700">
                   Next Batch
                 </span>
-                <span className="ml-2 text-sm text-gray-700 font-medium">{batch.startDate}</span>
+                <span className="ml-2 text-sm text-gray-700 font-medium">
+                  {batch.startDate}
+                </span>
               </div>
               <div className="flex items-baseline gap-2">
                 <span className="inline-block px-3 py-1 rounded-full font-semibold text-xs bg-purple-100 text-purple-800">
                   Demo Class
                 </span>
-                <span className="ml-2 text-sm text-gray-700 font-medium">{batch.demo}</span>
+                <span className="ml-2 text-sm text-gray-700 font-medium">
+                  {batch.demo}
+                </span>
               </div>
               <div className="flex items-baseline gap-2">
                 <span className="inline-block px-3 py-1 rounded-full font-semibold text-xs bg-purple-200 text-purple-800">
                   Workshop
                 </span>
-                <span className="ml-2 text-sm text-gray-700 font-medium">{batch.workshop}</span>
+                <span className="ml-2 text-sm text-gray-700 font-medium">
+                  {batch.workshop}
+                </span>
               </div>
             </div>
             <a

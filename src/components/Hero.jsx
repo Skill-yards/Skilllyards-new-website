@@ -54,19 +54,19 @@ const ArticleSlider = ({ className }) => {
     tl.fromTo(
       `.category-${currentSlide}`,
       { opacity: 0, y: 30, scale: 0.8 },
-      { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "back.out(1.7)" }
+      { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "back.out(1.7)" },
     )
       .fromTo(
         `.title-${currentSlide}`,
         { opacity: 0, x: -60 },
         { opacity: 1, x: 0, duration: 0.8, ease: "power3.out" },
-        "-=0.3"
+        "-=0.3",
       )
       .fromTo(
         `.description-${currentSlide}`,
         { opacity: 0, y: 30 },
         { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
-        "-=0.4"
+        "-=0.4",
       )
       .fromTo(
         `.buttons-${currentSlide} > *`,
@@ -78,7 +78,7 @@ const ArticleSlider = ({ className }) => {
           ease: "power2.out",
           stagger: 0.1,
         },
-        "-=0.3"
+        "-=0.3",
       );
   }, [currentSlide]);
 
@@ -96,14 +96,14 @@ const ArticleSlider = ({ className }) => {
           delay: 0.5,
           ease: "power3.out",
           stagger: 0.2,
-        }
+        },
       );
 
       if (dotsRef.current) {
         gsap.fromTo(
           dotsRef.current,
           { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.8, delay: 0.7, ease: "power2.out" }
+          { opacity: 1, y: 0, duration: 0.8, delay: 0.7, ease: "power2.out" },
         );
       }
 
@@ -111,7 +111,7 @@ const ArticleSlider = ({ className }) => {
         gsap.fromTo(
           counterRef.current,
           { opacity: 0, x: 20 },
-          { opacity: 1, x: 0, duration: 0.8, delay: 0.9, ease: "power2.out" }
+          { opacity: 1, x: 0, duration: 0.8, delay: 0.9, ease: "power2.out" },
         );
       }
 
@@ -194,7 +194,7 @@ const ArticleSlider = ({ className }) => {
         gsap.fromTo(
           formModal,
           { scale: 0.8, opacity: 0, y: 50 },
-          { scale: 1, opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.7)" }
+          { scale: 1, opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.7)" },
         );
       }
     }, 10);
@@ -220,19 +220,15 @@ const ArticleSlider = ({ className }) => {
                   : "opacity-0 scale-105 z-0"
               }`}
             >
-              
-             
               <div className="absolute inset-0 overflow-hidden w-full">
                 <BubbleBackground />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
               </div>
 
-            
               <div className="relative z-10 h-full flex items-center">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
                   <div className="max-w-3xl">
-                    
                     <div className={`mb-6 category-${index}`}>
                       <span className="inline-flex items-center px-5 py-2.5 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-md border border-white/40 text-white shadow-lg">
                         {article.category}
@@ -254,7 +250,9 @@ const ArticleSlider = ({ className }) => {
                     </p>
 
                     {/* Buttons */}
-                    <div className={`flex flex-col sm:flex-row gap-4 bottom-9 buttons-${index}`}>
+                    <div
+                      className={`flex flex-col sm:flex-row gap-4 bottom-9 buttons-${index}`}
+                    >
                       <button
                         onClick={() => handleCTAClick(article.program)}
                         className="group inline-flex items-center justify-center px-5 py-4 text-base sm:text-md font-semibold text-black bg-white rounded-full hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 hover:-translate-y-1"

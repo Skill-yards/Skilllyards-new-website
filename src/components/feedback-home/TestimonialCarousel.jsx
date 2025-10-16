@@ -1,4 +1,3 @@
-"use client";
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { Play, Pause } from "lucide-react";
@@ -11,7 +10,7 @@ export const TestimonialCarousel = ({ items }) => {
   const visible = 2; // desktop visible cards
   const { index, auto, toggleAuto, next, prev, maxIndex } = useCarousel(
     items.length,
-    visible
+    visible,
   );
 
   const containerRef = useRef(null);
@@ -74,7 +73,11 @@ export const TestimonialCarousel = ({ items }) => {
         </div>
         <div className="flex gap-2">
           <ArrowButton dir="left" onClick={prev} disabled={index === 0} />
-          <ArrowButton dir="right" onClick={next} disabled={index === maxIndex} />
+          <ArrowButton
+            dir="right"
+            onClick={next}
+            disabled={index === maxIndex}
+          />
         </div>
       </div>
 

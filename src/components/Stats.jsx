@@ -5,7 +5,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-
 function StatItem({
   value,
   label,
@@ -44,7 +43,7 @@ function StatItem({
             scale: 1,
             duration: 1,
             ease: "power3.out",
-          }
+          },
         );
       },
     });
@@ -75,9 +74,8 @@ function StatItem({
   );
 }
 
-
-function Stats({className}) {
-  const stats = [ 
+function Stats({ className }) {
+  const stats = [
     {
       value: 100,
       label: "Students Placed",
@@ -105,13 +103,17 @@ function Stats({className}) {
   ];
 
   return (
-    <section className={`${className} py-10 bg-gradient-to-r from-[#101432] via-[#223b7c] to-[#101432]`}>
+    <section
+      className={`${className} py-10 bg-gradient-to-r from-[#101432] via-[#223b7c] to-[#101432]`}
+    >
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto bg-white/[0.10] rounded-3xl shadow-2xl backdrop-blur-2xl pt-8 pb-8 px-4 sm:px-8">
           <h2 className="text-center mb-6 text-2xl md:text-3xl font-extrabold text-white drop-shadow-lg">
             Skillyards: Proven Impact in EdTech
           </h2>
-          <div className={`${className} grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8`}>
+          <div
+            className={`${className} grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8`}
+          >
             {stats.map((stat, index) => (
               <StatItem key={index} {...stat} />
             ))}

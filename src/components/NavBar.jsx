@@ -9,7 +9,7 @@ import {
   NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,12 +32,9 @@ const Navbar = () => {
                    transition-all duration-500 ease-in-out"
       >
         <div className="container mx-auto flex items-center justify-between px-6 py-3">
-                    <Link
-            to="/"
-            className="flex items-center gap-2 cursor-pointer group"
-          >
+          <Link to="/" className="flex items-center gap-2 cursor-pointer group">
             <img
-              src="/logo.png" 
+              src="/logo.png"
               alt="Skillyards Logo"
               className="w-10 h-10 rounded-full object-contain transition-transform duration-300 group-hover:scale-105"
             />
@@ -131,14 +128,47 @@ const Navbar = () => {
                   {isOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
               </SheetTrigger>
-              <SheetContent side="right" className="p-6 bg-white/70 backdrop-blur-lg">
+              <SheetContent
+                side="right"
+                className="p-6 bg-white/70 backdrop-blur-lg"
+              >
                 <div className="flex flex-col gap-4">
-                  <a href="/" className="text-lg font-medium text-black hover:text-blue-700">Home</a>
-                  <a href="/programs/bca" className="text-lg font-medium text-black hover:text-blue-700">BCA Programs</a>
-                  <a href="/programs/bba" className="text-lg font-medium text-black hover:text-blue-700">BBA Programs</a>
-                  <a href="/blogs" className="text-lg font-medium text-black hover:text-blue-700">Blogs</a>
-                  <a href="/about" className="text-lg font-medium text-black hover:text-blue-700">About</a>
-                  <a href="/contact" className="text-lg font-medium text-black hover:text-blue-700">Contact Us</a>
+                  <a
+                    href="/"
+                    className="text-lg font-medium text-black hover:text-blue-700"
+                  >
+                    Home
+                  </a>
+                  <a
+                    href="/programs/bca"
+                    className="text-lg font-medium text-black hover:text-blue-700"
+                  >
+                    BCA Programs
+                  </a>
+                  <a
+                    href="/programs/bba"
+                    className="text-lg font-medium text-black hover:text-blue-700"
+                  >
+                    BBA Programs
+                  </a>
+                  <a
+                    href="/blogs"
+                    className="text-lg font-medium text-black hover:text-blue-700"
+                  >
+                    Blogs
+                  </a>
+                  <a
+                    href="/about"
+                    className="text-lg font-medium text-black hover:text-blue-700"
+                  >
+                    About
+                  </a>
+                  <a
+                    href="/contact"
+                    className="text-lg font-medium text-black hover:text-blue-700"
+                  >
+                    Contact Us
+                  </a>
                 </div>
               </SheetContent>
             </Sheet>
