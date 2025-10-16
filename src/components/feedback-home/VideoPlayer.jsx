@@ -15,6 +15,7 @@ export const VideoPlayer = ({ videoIds, sticky = true }) => {
     if (wrapperRef.current) obs.observe(wrapperRef.current);
     return () => obs.disconnect();
   }, []);
+  //TODO: Unmute the video by default when it is in view --> currently muted to avoid intrusive experience
 
   return (
     <div
@@ -80,3 +81,4 @@ export const VideoPlayer = ({ videoIds, sticky = true }) => {
     </div>
   );
 };
+

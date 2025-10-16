@@ -1,8 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Instagram, Twitter, Youtube } from "lucide-react";
-
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -139,14 +137,14 @@ const ContactUs = () => {
                 <h3 className="text-gray-400 uppercase text-sm tracking-wider mb-2">
                   EMAIL
                 </h3>
-                <p className="text-white">darshakchavda2000@gmail.com</p>
+                <p className="text-white">info@skillyards.com</p>
               </div>
 
               <div>
                 <h3 className="text-gray-400 uppercase text-sm tracking-wider mb-2">
                   PHONE
                 </h3>
-                <p className="text-white">+91-1234567890</p>
+                <p className="text-white">+91-99999-99999</p>
               </div>
             </div>
           </div>
@@ -199,57 +197,8 @@ const ContactUs = () => {
                 SEND MESSAGE
               </button>
             </form>
-
-            <div className="flex space-x-4 mt-12">
-              <a
-                href="#"
-                className="text-white hover:text-gray-300 transition-colors duration-300"
-                onMouseEnter={(e) =>
-                  gsap.to(e.target, { scale: 1.2, duration: 0.3 })
-                }
-                onMouseLeave={(e) =>
-                  gsap.to(e.target, { scale: 1, duration: 0.3 })
-                }
-              >
-                <Instagram size={24} />
-              </a>
-              <a
-                href="#"
-                className="text-white hover:text-gray-300 transition-colors duration-300"
-                onMouseEnter={(e) =>
-                  gsap.to(e.target, { scale: 1.2, duration: 0.3 })
-                }
-                onMouseLeave={(e) =>
-                  gsap.to(e.target, { scale: 1, duration: 0.3 })
-                }
-              >
-                <Twitter size={24} />
-              </a>
-              <a
-                href="#"
-                className="text-white hover:text-gray-300 transition-colors duration-300"
-                onMouseEnter={(e) =>
-                  gsap.to(e.target, { scale: 1.2, duration: 0.3 })
-                }
-                onMouseLeave={(e) =>
-                  gsap.to(e.target, { scale: 1, duration: 0.3 })
-                }
-              >
-                <Youtube size={24} />
-              </a>
-            </div>
           </div>
         </div>
-      </div>
-
-      <div
-        ref={quoteRef}
-        className="absolute bottom-0 left-0 right-0 bg-blue-600/90 py-8 px-8 md:px-16"
-      >
-        <p className="text-white text-center text-lg md:text-xl italic font-light">
-          "We are what we repeatedly do. Excellence then, is not an act, but a
-          habit."
-        </p>
       </div>
     </div>
   );

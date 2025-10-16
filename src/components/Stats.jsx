@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+
 function StatItem({
   value,
   label,
@@ -74,46 +75,9 @@ function StatItem({
   );
 }
 
-function Stats() {
-  const sectionRef = useRef(null);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        ".stat-title",
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 85%",
-          },
-        }
-      );
-
-      gsap.fromTo(
-        ".stat-grid",
-        { opacity: 0, scale: 0.9 },
-        {
-          opacity: 1,
-          scale: 1,
-          duration: 1.5,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 80%",
-          },
-        }
-      );
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
-  const stats = [
+function Stats({className}) {
+  const stats = [ 
     {
       value: 100,
       label: "Students Placed",
@@ -141,23 +105,13 @@ function Stats() {
   ];
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative py-20 bg-gradient-to-br from-sky-100 via-cyan-100 to-blue-100 overflow-hidden"
-    >
-      {/* Subtle background glow */}
-      <div className="absolute inset-0">
-        <div className="absolute -top-20 left-20 w-[300px] h-[300px] bg-cyan-300/40 blur-3xl rounded-full"></div>
-        <div className="absolute bottom-0 right-0 w-[350px] h-[350px] bg-sky-300/40 blur-3xl rounded-full"></div>
-      </div>
-
-      <div className="relative container mx-auto px-4 z-10">
-        <div className="max-w-5xl mx-auto bg-white/70 backdrop-blur-2xl border border-cyan-300/40 rounded-3xl shadow-xl p-8 sm:p-12">
-          <h2 className="stat-title text-center mb-10 text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-cyan-600 via-blue-600 to-sky-700 bg-clip-text text-transparent drop-shadow-sm">
+    <section className={`${className} py-10 bg-gradient-to-r from-[#101432] via-[#223b7c] to-[#101432]`}>
+      <div className="container mx-auto px-4">
+        <div className="max-w-5xl mx-auto bg-white/[0.10] rounded-3xl shadow-2xl backdrop-blur-2xl pt-8 pb-8 px-4 sm:px-8">
+          <h2 className="text-center mb-6 text-2xl md:text-3xl font-extrabold text-white drop-shadow-lg">
             Skillyards: Proven Impact in EdTech
           </h2>
-
-          <div className="stat-grid grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-10">
+          <div className={`${className} grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8`}>
             {stats.map((stat, index) => (
               <StatItem key={index} {...stat} />
             ))}
