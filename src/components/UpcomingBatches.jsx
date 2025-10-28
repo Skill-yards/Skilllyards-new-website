@@ -1,93 +1,127 @@
-import fullstack from "../assets/course/image1.png";
-import react from "../assets/course/image.png";
-import sql from "../assets/course/image3.png";
-const upcomingBatches = [
-  {
-    title: "Full Stack Developer Bootcamp",
-    startDate: "October 18, 2025",
-    demo: "October 15, 2025",
-    ctaLink: "/register-fullstack",
-    workshop: "Building MERN Projects - Free Webinar (Oct 20)",
-    image: fullstack
-  },
-  {
-    title: "Frontend with React.js",
-    startDate: "November 2, 2025",
-    demo: "October 28, 2025",
-    ctaLink: "/register-react",
-    workshop: "UI/UX Crash Course : Free Workshop for Beginners",
-    image: react
-  },
-  {
-    title: "SQL & Database Foundations",
-    startDate: "October 30, 2025",
-    demo: "October 27, 2025",
-    ctaLink: "/register-sql",
-    workshop: "Databases for Beginners - Free Webinar with Q&A (Nov 1)",
-    image: sql,
-  },
-];
 
-const purpleConfig = {
-  from: "from-yellow-50",
-  to: "to-yellow-100",
-  border: "border-purple-200",
-  btn: "bg-purple-600 hover:bg-purple-700",
-  accent: "bg-purple-100 text-purple-800",
-};
+import React, { useEffect, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const UpcomingBatches = ({className}) => {
+gsap.registerPlugin(ScrollTrigger);
+
+const UpcomingBatches = ({ className }) => {
+  const [batches, setBatches] = useState([]);
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch("https://your-api-endpoint.com/upcoming-batches");
+        const data = await res.json();
+        setBatches(data);
+      } catch (error) {
+        console.error("Failed to load batches:", error);
+      }
+    };
+    fetchData();
+  }, []);
+
+
+  useEffect(() => {
+    if (batches.length === 0) return;
+
+    const cards = gsap.utils.toArray(".batch-card");
+    cards.forEach((card, i) => {
+      gsap.from(card, {
+        y: 80,
+        opacity: 0,
+        duration: 1,
+        delay: i * 0.1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: card,
+          start: "top 85%",
+          toggleActions: "play none none reverse",
+        },
+      });
+    });
+  }, [batches]);
+
   return (
-    <section className={`max-w-6xl mx-auto mt-16 px-4 sm:px-6 lg:px-8 ${className}`}>
-      <h2 className="text-4xl font-bold text-center mb-12 text-neutral-800 drop-shadow-lg">
+    <section
+      className={`relative py-20 px-6 overflow-hidden ${className}`}
+    >
+      
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-purple-100 via-indigo-50 to-yellow-50">
+        <div className="absolute top-10 left-10 w-[300px] h-[300px] bg-purple-300/30 blur-3xl rounded-full animate-pulse"></div>
+        <div className="absolute bottom-0 right-0 w-[350px] h-[350px] bg-yellow-200/30 blur-3xl rounded-full animate-pulse"></div>
+      </div>
+
+      <h2 className="text-4xl font-bold text-center mb-14 text-gray-800 drop-shadow-md">
         Upcoming Batches & Events
       </h2>
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {upcomingBatches.map((batch) => (
-          <div
-            key={batch.title}
-            className={`bg-gradient-to-tr ${purpleConfig.from} ${purpleConfig.to} rounded-2xl shadow-md p-6 flex flex-col transition-all duration-300 hover:shadow-lg hover:-translate-y-2 hover:border-2 ${purpleConfig.border} border border-gray-100 h-full cursor-pointer`}
-          >
-            <img
-              src={batch.image}
-              alt={`${batch.title} banner`}
-              className="w-full h-40 object-cover rounded-xl mb-4 border border-purple-100 shadow-sm"
-              loading="lazy"
-            />
-            <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
-              {batch.title}
-            </h3>
-            <div className="space-y-4 mb-6 flex-grow">
-              <div className="flex items-baseline gap-2">
-                <span className="inline-block px-3 py-1 rounded-full font-semibold text-xs bg-purple-200 text-purple-700">
-                  Next Batch
-                </span>
-                <span className="ml-2 text-sm text-gray-700 font-medium">{batch.startDate}</span>
-              </div>
-              <div className="flex items-baseline gap-2">
-                <span className="inline-block px-3 py-1 rounded-full font-semibold text-xs bg-purple-100 text-purple-800">
-                  Demo Class
-                </span>
-                <span className="ml-2 text-sm text-gray-700 font-medium">{batch.demo}</span>
-              </div>
-              <div className="flex items-baseline gap-2">
-                <span className="inline-block px-3 py-1 rounded-full font-semibold text-xs bg-purple-200 text-purple-800">
-                  Workshop
-                </span>
-                <span className="ml-2 text-sm text-gray-700 font-medium">{batch.workshop}</span>
-              </div>
-            </div>
-            <a
-              href={batch.ctaLink}
-              className={`${purpleConfig.btn} block w-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 text-white text-center rounded-lg py-3 font-semibold tracking-tight shadow transition-all duration-200 mt-auto transform hover:scale-105`}
-              target="_blank"
-              rel="noopener noreferrer"
+
+    
+      {batches.length === 0 ? (
+        <p className="text-center text-gray-600 text-lg">Loading upcoming batches...</p>
+      ) : (
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+          {batches.map((batch) => (
+            <div
+              key={batch.title}
+              className="batch-card bg-white/70 backdrop-blur-lg rounded-2xl shadow-md p-6 flex flex-col border border-purple-100 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 hover:scale-[1.02]"
             >
-              Register Now
-            </a>
-          </div>
-        ))}
-      </div>
+              <div className="relative overflow-hidden rounded-xl mb-5">
+                <img
+                  src={batch.image}
+                  alt={batch.title}
+                  className="w-full h-48 object-cover rounded-xl transform transition-transform duration-500 hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-purple-700/30 to-transparent rounded-xl"></div>
+              </div>
+
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                {batch.title}
+              </h3>
+
+              <div className="space-y-3 mb-6 flex-grow">
+                <div className="flex items-baseline gap-2">
+                  <span className="inline-block px-3 py-1 rounded-full font-semibold text-xs bg-purple-100 text-purple-700">
+                    Next Batch
+                  </span>
+                  <span className="ml-1 text-sm text-gray-700 font-medium">
+                    {batch.startDate}
+                  </span>
+                </div>
+
+                <div className="flex items-baseline gap-2">
+                  <span className="inline-block px-3 py-1 rounded-full font-semibold text-xs bg-purple-200 text-purple-800">
+                    Demo Class
+                  </span>
+                  <span className="ml-1 text-sm text-gray-700 font-medium">
+                    {batch.demo}
+                  </span>
+                </div>
+
+                <div className="flex items-baseline gap-2">
+                  <span className="inline-block px-3 py-1 rounded-full font-semibold text-xs bg-indigo-100 text-indigo-800">
+                    Workshop
+                  </span>
+                  <span className="ml-1 text-sm text-gray-700 font-medium">
+                    {batch.workshop}
+                  </span>
+                </div>
+              </div>
+
+              <a
+                href={batch.ctaLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gradient-to-r from-purple-600 via-indigo-600 to-yellow-500 text-white font-semibold py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-center hover:scale-105"
+              >
+                Register Now
+              </a>
+            </div>
+          ))}
+        </div>
+      )}
     </section>
   );
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import { Play } from "lucide-react";
+
 
 const AboutUs = () => {
   const stats = [
@@ -80,7 +80,7 @@ const AboutUs = () => {
           </div>
         </div>
 
-        {/* Stats Grid */}
+       
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {stats.map((stat, index) => (
             <div

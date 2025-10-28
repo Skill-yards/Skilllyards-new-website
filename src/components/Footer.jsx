@@ -11,8 +11,8 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-muted border-t py-8 md:py-20 px-4 md:px-20 shadow-2xl mt-auto w-full rounded-xl">
-      <div className="max-w-7xl mx-auto px-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-20">
+    <footer className="bg-muted border-t py-5 md:py-15 px-4 md:px-20 shadow-2xl mt-auto w-full rounded-xl">
+      <div className="max-w-7xl mx-auto px-2 pt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-20">
         <Card className="bg-transparent border-none shadow-none space-y-4 col-span-1 sm:col-span-2 lg:col-span-1">
           <CardHeader className="flex items-start gap-2 p-0">
             <CardTitle className="text-lg">
@@ -107,7 +107,7 @@ const Footer = () => {
         </Card>
       </div>
 
-      <div className="border-t border-muted-foreground/20 mt-8 md:mt-20 pt-6">
+      <div className="border-t border-muted-foreground/20 mt-2 md:mt-20 pt-6">
         <p className="text-center text-xs md:text-sm text-muted-foreground">
           © {new Date().getFullYear()} Skilllyards. All rights reserved.
         </p>

@@ -8,7 +8,6 @@ import Infosys from "../assets/companies/infosys.webp";
 import Tcl from "../assets/companies/tcl.webp";
 import genpact from "../assets/companies/genpact.webp";
 
-
 const companyLogos = [
   { src: forelsket, name: "Forelsket" },
   { src: s7c, name: "S7C" },
@@ -20,25 +19,27 @@ const companyLogos = [
   { src: genpact, name: "Genpact" },
 ];
 
-const OurPartner = ({className}) => (
-  <section className={`relative py-20 overflow-hidden bg-gradient-to-br from-[#2b3769] via-white to-[#578dca] ${className}`}>
-    {/* Decorative gradient orbs */}
-    <div className="absolute top-[10rem] right-[10rem] w-[400px] h-[400px] bg-gradient-to-r from-[#00bcd4]/40 to-[#1de9b6]/30 blur-[120px] rounded-full animate-pulse" />
-    <div className="absolute bottom-[-8rem] left-[-8rem] w-[300px] h-[300px] bg-gradient-to-r from-[#f48fb1]/30 to-[#fdd835]/30 blur-[100px] rounded-full animate-pulse" />
+const OurPartner = ({ className }) => (
+  <section
+    className='relative py-20 overflow-hidden
+      bg-gradient-to-b from-[#05070f] via-[#0b1b3f] to-[#0b1b3f]
+      '
+  >
+    
 
-    <div className="relative z-10 text-center">
-      <h2 className="text-4xl sm:text-5xl font-extrabold mb-4 text-[#0d3e39] tracking-tight">
+    <div className={`relative z-10 text-center ${className} `}>
+      <h2 className="text-4xl sm:text-5xl font-extrabold mb-4 text-white tracking-tight">
         Our Placement Partners
       </h2>
-      <p className="text-lg text-gray-700 max-w-xl mx-auto">
+      <p className="text-lg text-slate-200/90 max-w-xl mx-auto">
         We proudly collaborate with leading tech organizations driving innovation.
       </p>
-      <div className="w-24 h-1.5 bg-gradient-to-r from-[#00bcd4] to-[#1de9b6] rounded-full mx-auto mt-6 mb-12 shadow-lg" />
+      <div className="w-24 h-1.5 bg-gradient-to-r from-sky-400 to-indigo-400 rounded-full mx-auto mt-6 mb-12 shadow-lg" />
 
-      {/* Marquee container */}
-      <div className="relative overflow-hidden">
+      
+      <div className={`relative overflow-hidden ${className}`}>
         <div
-          className="flex items-center"
+          className="flex items-center p-12"
           style={{
             width: "200%",
             animation: "scroll 25s linear infinite",
@@ -47,22 +48,19 @@ const OurPartner = ({className}) => (
           {[...companyLogos, ...companyLogos].map(({ src, name }, i) => (
             <figure
               key={name + i}
-              className={`group relative min-w-[150px] sm:min-w-[180px] mx-8 flex flex-col items-center justify-center cursor-pointer hover:scale-110 transition-transform duration-300 ease-out ${className}`}
+              className="group relative min-w-[150px] sm:min-w-[180px] mx-8 flex flex-col items-center justify-center transition-transform duration-300 ease-out hover:scale-110"
             >
-             
-              
-
-              {/* Logo Container */}
-              <div className="relative bg-white/70 backdrop-blur-xl rounded-2xl p-4 shadow-lg ring-1 ring-white/30 transition-all duration-300 group-hover:shadow-[0_0_10px_rgba(0,188,212,0.4)]">
+              {/* Logo Card */}
+              <div className="relative bg-white/80 backdrop-blur-xl rounded-2xl p-4 shadow-lg ring-1 ring-white/40">
                 <img
                   src={src}
                   alt={`${name} logo`}
-                  className="w-20 h-20 sm:w-24 sm:h-24 object-contain drop-shadow-lg transition-transform duration-500 group-hover:scale-110"
+                  className="w-20 h-20 sm:w-24 sm:h-24 object-contain drop-shadow-md transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
 
-              {/* Caption */}
-              <figcaption className="mt-3 px-4 py-1.5 bg-gradient-to-r from-[#00bcd4]/20 to-[#1de9b6]/20 text-[#0d3e39] text-sm font-semibold rounded-full backdrop-blur-sm shadow-sm transition-all duration-300 group-hover:from-[#00bcd4]/30 group-hover:to-[#1de9b6]/30">
+            
+              <figcaption className="mt-3 px-4 py-1.5 bg-white/10 text-white text-sm font-semibold rounded-full backdrop-blur-sm shadow-sm">
                 {name}
               </figcaption>
             </figure>
@@ -71,7 +69,6 @@ const OurPartner = ({className}) => (
       </div>
     </div>
 
-    
     <style>{`
       @keyframes scroll {
         0% { transform: translateX(0); }
