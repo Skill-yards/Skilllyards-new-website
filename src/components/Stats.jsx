@@ -5,7 +5,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-
 function StatItem({
   value,
   label,
@@ -19,22 +18,24 @@ function StatItem({
 
   useEffect(() => {
     const el = ref.current;
-    let start = 0;
-    const duration = 2000;
-    const step = Math.max(20, Math.floor(duration / value));
 
     const trigger = ScrollTrigger.create({
       trigger: el,
-      start: "top 80%",
+      start: "top 60%",
+      once: true, 
       onEnter: () => {
-        const timer = setInterval(() => {
-          start += 1;
-          setCount(start);
-          if (start >= value) {
-            clearInterval(timer);
-          }
-        }, step);
+        const obj = { val: 0 }; 
+        gsap.to(obj, {
+          val: value,
+          duration: 2,
+          ease: "power3.out",
+          onUpdate: () => {
+            // Round value and update React state
+            setCount(Math.floor(obj.val));
+          },
+        });
 
+        // Card entrance animation
         gsap.fromTo(
           el,
           { y: 50, opacity: 0, scale: 0.9 },
@@ -75,9 +76,8 @@ function StatItem({
   );
 }
 
-
-function Stats({className}) {
-  const stats = [ 
+function Stats({ className }) {
+  const stats = [
     {
       value: 100,
       label: "Students Placed",
@@ -105,13 +105,15 @@ function Stats({className}) {
   ];
 
   return (
-    <section className={`${className} py-10 bg-gradient-to-r from-[#101432] via-[#223b7c] to-[#101432]`}>
+    <section
+      className={`${className} py-10 bg-gradient-to-r from-[#101432] via-[#223b7c] to-[#101432]`}
+    >
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto bg-white/[0.10] rounded-3xl shadow-2xl backdrop-blur-2xl pt-8 pb-8 px-4 sm:px-8">
           <h2 className="text-center mb-6 text-2xl md:text-3xl font-extrabold text-white drop-shadow-lg">
             Skillyards: Proven Impact in EdTech
           </h2>
-          <div className={`${className} grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8`}>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8">
             {stats.map((stat, index) => (
               <StatItem key={index} {...stat} />
             ))}

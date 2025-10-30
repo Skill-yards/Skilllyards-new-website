@@ -1,4 +1,4 @@
-"use client";
+
 import { useEffect, useRef } from "react";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import gsap from "gsap";
