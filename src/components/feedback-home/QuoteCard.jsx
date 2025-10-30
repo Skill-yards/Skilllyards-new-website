@@ -1,4 +1,3 @@
-"use client";
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -33,7 +32,7 @@ export const QuoteCard = ({ info, truncate = true }) => {
           start: "top 85%",
           toggleActions: "play none none reverse",
         },
-      }
+      },
     );
   }, []);
 
@@ -60,7 +59,10 @@ export const QuoteCard = ({ info, truncate = true }) => {
             style={{ borderColor: COLORS.accent }}
           />
           <div className="min-w-0">
-            <p className="font-semibold truncate" style={{ color: COLORS.text }}>
+            <p
+              className="font-semibold truncate"
+              style={{ color: COLORS.text }}
+            >
               {info.name}
             </p>
             {info.position && (

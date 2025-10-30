@@ -10,8 +10,8 @@ import tushar from "../../assets/Students/tushar.webp";
 import ayush from "../../assets/Students/ayush.webp";
 import sachin from "../../assets/Students/sachin.webp";
 
-export default function WhatStudentsSaid({className}) {
-  const reviews = useMemo(  
+export default function WhatStudentsSaid({ className }) {
+  const reviews = useMemo(
     () => [
       {
         id: 1,
@@ -78,7 +78,7 @@ export default function WhatStudentsSaid({className}) {
       <div className={`max-w-6xl mx-auto ${className}`}>
         <div className="text-center mb-8">
           <h2
-            className={`font-serif font-bold text-2xl md:text-3xl tracking-tight ${className}`} 
+            className={`font-serif font-bold text-2xl md:text-3xl tracking-tight ${className}`}
             style={{ color: COLORS.text }}
           >
             Hear from Our Students

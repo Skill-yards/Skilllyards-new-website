@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from "react";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import gsap from "gsap";
@@ -62,7 +61,8 @@ const WhyChooseSkillyards = () => {
           Why Choose <span className="text-blue-600">Skillyards</span>?
         </h2>
         <p className="text-lg text-blue-800 mt-3">
-          Discover what makes us the most learner-friendly tech community in Agra.
+          Discover what makes us the most learner-friendly tech community in
+          Agra.
         </p>
       </div>
 

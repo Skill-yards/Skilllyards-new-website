@@ -45,7 +45,7 @@ function StatItem({
             scale: 1,
             duration: 1,
             ease: "power3.out",
-          }
+          },
         );
       },
     });
