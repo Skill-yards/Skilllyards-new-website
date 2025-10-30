@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
 const FAQ_DATA = [
@@ -34,75 +33,54 @@ const FAQ = () => {
       <div className="absolute bottom-10 right-[10%] w-96 h-96 bg-indigo-200/40 rounded-full blur-[140px]" />
 
       <div className="relative z-10 w-full max-w-4xl mx-auto text-center">
-        <motion.h2
-          initial={{ y: 30, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4"
-        >
+        <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
           Frequently Asked Questions
-        </motion.h2>
-        <motion.p
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-gray-600 mb-14 text-lg max-w-2xl mx-auto"
-        >
+        </h2>
+        <p className="text-gray-600 mb-14 text-lg max-w-2xl mx-auto">
           Everything you need to know about Skillyards programs and learning experience.
-        </motion.p>
+        </p>
 
         <div className="space-y-4">
           {FAQ_DATA.map((item, i) => {
             const isOpen = active === i;
             return (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
-                viewport={{ once: true }}
                 className={`relative overflow-hidden rounded-2xl border border-white/20 bg-white/10 backdrop-blur-xl shadow-lg transition-all duration-300 ${
-                  isOpen ? "ring-2 ring-sky-400/70 shadow-sky-200/30" : "hover:shadow-sky-100/30"
+                  isOpen
+                    ? "ring-2 ring-sky-400/70 shadow-sky-200/30"
+                    : "hover:shadow-sky-100/30"
                 }`}
               >
                 <button
                   onClick={() => setActive(isOpen ? null : i)}
                   className="w-full flex justify-between items-center p-6 text-left"
                 >
-                  <span className="text-lg md:text-xl font-semibold text-gray-900">{item.q}</span>
-                  <motion.div
-                    animate={{ rotate: isOpen ? 180 : 0 }}
-                    transition={{ duration: 0.25 }}
-                    className="text-gray-500"
+                  <span className="text-lg md:text-xl font-semibold text-gray-900">
+                    {item.q}
+                  </span>
+                  <div
+                    className={`text-gray-500 transform transition-transform duration-300 ${
+                      isOpen ? "rotate-180" : ""
+                    }`}
                   >
                     <ChevronDown size={22} />
-                  </motion.div>
+                  </div>
                 </button>
 
-                <AnimatePresence>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.4 }}
-                      className="px-6 pb-6 text-gray-700 text-base leading-relaxed"
-                    >
-                      {item.a}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
+                <div
+                  className={`px-6 text-gray-700 text-base leading-relaxed transition-all duration-500 ease-in-out overflow-hidden ${
+                    isOpen ? "max-h-40 pb-6 opacity-100" : "max-h-0 opacity-0"
+                  }`}
+                >
+                  {item.a}
+                </div>
+              </div>
             );
           })}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="mt-16"
-        >
+        <div className="mt-16">
           <p className="text-gray-700 text-lg mb-3">Still have questions?</p>
           <a
             href="/contact"
@@ -110,7 +88,7 @@ const FAQ = () => {
           >
             Contact Our Team
           </a>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
