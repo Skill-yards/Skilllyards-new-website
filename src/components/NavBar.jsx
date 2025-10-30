@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  // Centralizes dropdown structure for scalability and easier updates
   const dropdownMenus = [
     {
       name: "Programs",
@@ -32,6 +33,7 @@ const Navbar = () => {
                    transition-all duration-500 ease-in-out"
       >
         <div className="container mx-auto flex items-center justify-between px-6 py-3">
+          {/* Combines logo and brand name to reinforce identity and provide homepage access */}
           <Link to="/" className="flex items-center gap-2 cursor-pointer group">
             <img
               src="/logo.png"
@@ -43,9 +45,11 @@ const Navbar = () => {
             </span>
           </Link>
 
+          {/* Displays full navigation only on medium and larger screens for better layout control */}
           <div className="hidden md:block">
             <NavigationMenu>
               <NavigationMenuList className="flex gap-4">
+                {/* Highlights homepage for quick access */}
                 <NavigationMenuItem>
                   <NavigationMenuLink
                     href="/"
@@ -57,6 +61,7 @@ const Navbar = () => {
                   </NavigationMenuLink>
                 </NavigationMenuItem>
 
+                {/* Adds dropdowns for grouped navigation items to reduce clutter */}
                 {dropdownMenus.map((menu) => (
                   <NavigationMenuItem key={menu.name}>
                     <NavigationMenuTrigger
@@ -84,6 +89,7 @@ const Navbar = () => {
                   </NavigationMenuItem>
                 ))}
 
+                {/* Adds direct links for key informational pages to improve discoverability */}
                 <NavigationMenuItem>
                   <NavigationMenuLink
                     href="/blogs"
@@ -120,7 +126,7 @@ const Navbar = () => {
             </NavigationMenu>
           </div>
 
-          {/* Mobile Menu */}
+          {/* Enables mobile-friendly navigation with collapsible menu */}
           <div className="md:hidden">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
@@ -132,6 +138,7 @@ const Navbar = () => {
                 side="right"
                 className="p-6 bg-white/70 backdrop-blur-lg"
               >
+                {/* Mirrors desktop links for consistency across devices */}
                 <div className="flex flex-col gap-4">
                   <a
                     href="/"

@@ -1,98 +1,119 @@
-import React from "react";
-import {
-  Accordion,
-  AccordionItem,
-  AccordionTrigger,
-  AccordionContent,
-} from "@/components/ui/accordion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 
-const FAQ_ITEMS = [
+const FAQ_DATA = [
   {
-    question:
-      "Does Skillyards guarantee internships and job placements after program completion?",
-    answer:
-      "Yes, Skillyards provides a 100% placement guarantee and paid internships as part of select programs. Students are placed in roles with leading tech companies, supported by in-house job opportunities and attractive packages, ensuring a robust start to your career.",
+    q: "Does Skillyards guarantee internships or placements?",
+    a: "Yes! Every enrolled learner gets a guaranteed internship or placement opportunity through Skillyards’ network. We focus on real growth and industry connection, not just certificates.",
   },
   {
-    question:
-      "What practical experience will I gain during a developer training program at Skillyards?",
-    answer:
-      "Skillyards emphasizes project-based learning, with students working on real client and live industry projects. You also benefit from hackathons, open-source contributions, and mentorship, building both your portfolio and job-ready skills before graduation.",
+    q: "Do I need coding experience to join?",
+    a: "Not at all. Our programs are designed for both beginners and graduates. You start from the fundamentals and gradually move into real-world projects guided by mentors.",
   },
   {
-    question:
-      "Are there networking and professional development sessions for students?",
-    answer:
-      "Absolutely. Through the Skillyards Club, students engage in networking events, personality development workshops, guest lectures, and leadership sessions, often led by industry experts to help them grow personally and professionally.",
+    q: "What kind of projects will I build?",
+    a: "You’ll work on live, industry-grade projects — from building full-stack apps to deploying real products. Every project adds to your portfolio and showcases your practical skills.",
   },
   {
-    question:
-      "Who can enroll in Skillyards programs—and do I need technical experience to start?",
-    answer:
-      "Programs are designed for beginners and graduates alike. Curriculum is beginner-friendly, comprehensive, and tailored to both those with and without prior experience so anyone interested in tech and software development can start building skills and advancing their careers.",
+    q: "How are classes conducted?",
+    a: "All sessions are live and interactive. You’ll have access to mentor Q&As, recorded sessions, and 1:1 doubt support when needed.",
+  },
+  {
+    q: "Will I get a certificate after completion?",
+    a: "Yes. On successful completion, you’ll receive a verified certificate that reflects your specialization and project experience.",
   },
 ];
 
-const FAQ = () => (
-  <section className="bg-gradient-to-b from-gray-50 to-white py-20 px-4">
-    <div className="container mx-auto max-w-6xl">
-      <h2 className="text-4xl font-extrabold text-center text-gray-800 mb-4">
-        Frequently Asked Questions
-      </h2>
-      <div className="w-24 h-1 bg-gradient-to-r from-teal-500 to-indigo-500 mx-auto rounded-full mb-10"></div>
+const FAQ = () => {
+  const [active, setActive] = useState(null);
 
-      <Accordion
-        type="multiple"
-        className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start"
-      >
-        {FAQ_ITEMS.map((item, index) => (
-          <AccordionItem
-            key={index}
-            value={`item-${index}`}
-            className="
-              bg-white 
-              border 
-              border-gray-200 
-              rounded-2xl 
-              shadow-md 
-              transition-all 
-              duration-300 
-              hover:shadow-lg 
-              data-[state=open]:border-teal-500 
-              data-[state=open]:shadow-lg
-            "
+  return (
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-sky-50 via-white to-sky-100 overflow-hidden py-24 px-6">
+      <div className="absolute top-20 left-[10%] w-72 h-72 bg-sky-200/40 rounded-full blur-[100px]" />
+      <div className="absolute bottom-10 right-[10%] w-96 h-96 bg-indigo-200/40 rounded-full blur-[140px]" />
+
+      <div className="relative z-10 w-full max-w-4xl mx-auto text-center">
+        <motion.h2
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4"
+        >
+          Frequently Asked Questions
+        </motion.h2>
+        <motion.p
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-gray-600 mb-14 text-lg max-w-2xl mx-auto"
+        >
+          Everything you need to know about Skillyards programs and learning experience.
+        </motion.p>
+
+        <div className="space-y-4">
+          {FAQ_DATA.map((item, i) => {
+            const isOpen = active === i;
+            return (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: i * 0.1 }}
+                viewport={{ once: true }}
+                className={`relative overflow-hidden rounded-2xl border border-white/20 bg-white/10 backdrop-blur-xl shadow-lg transition-all duration-300 ${
+                  isOpen ? "ring-2 ring-sky-400/70 shadow-sky-200/30" : "hover:shadow-sky-100/30"
+                }`}
+              >
+                <button
+                  onClick={() => setActive(isOpen ? null : i)}
+                  className="w-full flex justify-between items-center p-6 text-left"
+                >
+                  <span className="text-lg md:text-xl font-semibold text-gray-900">{item.q}</span>
+                  <motion.div
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.25 }}
+                    className="text-gray-500"
+                  >
+                    <ChevronDown size={22} />
+                  </motion.div>
+                </button>
+
+                <AnimatePresence>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.4 }}
+                      className="px-6 pb-6 text-gray-700 text-base leading-relaxed"
+                    >
+                      {item.a}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          className="mt-16"
+        >
+          <p className="text-gray-700 text-lg mb-3">Still have questions?</p>
+          <a
+            href="/contact"
+            className="inline-block bg-gradient-to-r from-sky-500 to-indigo-500 text-white font-semibold px-8 py-3 rounded-full shadow-md hover:shadow-lg hover:opacity-90 transition-all"
           >
-            <AccordionTrigger
-              className="
-                flex 
-                justify-between 
-                items-center 
-                p-6 
-                text-left 
-                w-full 
-                cursor-pointer 
-                text-gray-900 
-                font-medium 
-                text-lg 
-                transition-colors 
-                rounded-2xl
-                hover:bg-teal-50 
-                hover:no-underline 
-                focus:outline-none 
-                focus:ring-2 
-                focus:ring-teal-400
-              "
-            >
-              <span className="text-gray-900">{item.question}</span>
-            </AccordionTrigger>
-            <AccordionContent className="px-6 pb-6 text-gray-700 leading-relaxed text-base">
-              {item.answer}
-            </AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
-    </div>
-  </section>
-);
+            Contact Our Team
+          </a>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
 
 export default FAQ;
