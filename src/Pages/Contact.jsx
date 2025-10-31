@@ -44,8 +44,12 @@ const Info = ({ Icon, title, text }) => (
       <Icon className="w-4 h-4 md:w-5 md:h-5 text-blue-400" />
     </div>
     <div>
-      <h3 className="text-gray-400 uppercase text-xs md:text-sm tracking-widest font-semibold mb-1 md:mb-2">{title}</h3>
-      <p className="text-white text-sm md:text-lg font-medium hover:text-blue-300 transition-colors">{text}</p>
+      <h3 className="text-gray-400 uppercase text-xs md:text-sm tracking-widest font-semibold mb-1 md:mb-2">
+        {title}
+      </h3>
+      <p className="text-white text-sm md:text-lg font-medium hover:text-blue-300 transition-colors">
+        {text}
+      </p>
     </div>
   </div>
 );
@@ -56,7 +60,6 @@ const ContactUs = () => {
   const [err, setErr] = useState({});
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -124,7 +127,7 @@ const ContactUs = () => {
           stagger: 0.2,
           ease: "power4.out",
           scrollTrigger: { trigger: refs.current.left, start: "top 80%" },
-        }
+        },
       );
 
       gsap.fromTo(
@@ -137,7 +140,7 @@ const ContactUs = () => {
           duration: 1.2,
           ease: "back.out(1.2)",
           scrollTrigger: { trigger: refs.current.form, start: "top 85%" },
-        }
+        },
       );
 
       gsap.fromTo(
@@ -150,7 +153,7 @@ const ContactUs = () => {
           duration: 1.2,
           ease: "power3.out",
           scrollTrigger: { trigger: refs.current.quote, start: "top 90%" },
-        }
+        },
       );
 
       if (refs.current.button) {
@@ -169,7 +172,10 @@ const ContactUs = () => {
   }, []);
 
   return (
-    <div ref={(el) => (refs.current.container = el)} className="min-h-screen relative overflow-hidden">
+    <div
+      ref={(el) => (refs.current.container = el)}
+      className="min-h-screen relative overflow-hidden"
+    >
       <div
         ref={(el) => (refs.current.bg = el)}
         className="absolute inset-0 bg-cover bg-center"
@@ -190,11 +196,14 @@ const ContactUs = () => {
           >
             <div className="space-y-4 md:space-y-6">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight max-w-full mt-8 md:mt-8">
-                Have a project<br />in mind?
+                Have a project
+                <br />
+                in mind?
               </h1>
 
               <p className="text-gray-200 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl max-w-lg">
-                Let's create something extraordinary together. Your vision, our expertise - perfect synergy.
+                Let's create something extraordinary together. Your vision, our
+                expertise - perfect synergy.
               </p>
             </div>
             <div className="space-y-4 md:space-y-8 pt-4 md:pt-8">
@@ -217,16 +226,45 @@ const ContactUs = () => {
                   <div className="w-16 h-16 md:w-20 md:h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6">
                     <CheckCircle2 className="w-8 h-8 md:w-10 md:h-10 text-green-400" />
                   </div>
-                  <h3 className="text-xl md:text-2xl font-bold text-white mb-2 md:mb-3">Message Sent!</h3>
-                  <p className="text-gray-300 text-sm md:text-base">We'll get back to you within 24 hours.</p>
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-2 md:mb-3">
+                    Message Sent!
+                  </h3>
+                  <p className="text-gray-300 text-sm md:text-base">
+                    We'll get back to you within 24 hours.
+                  </p>
                 </div>
               ) : (
                 <>
-                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 md:mb-8 text-center">Start Your Project</h2>
-                  <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
-                    <Field name="name" label="Your Name" value={form.name} onChange={handleChange} error={err.name} />
-                    <Field name="email" label="Email Address" type="email" value={form.email} onChange={handleChange} error={err.email} />
-                    <Field name="details" label="Project Details" type="textarea" value={form.details} onChange={handleChange} error={err.details} />
+                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 md:mb-8 text-center">
+                    Start Your Project
+                  </h2>
+                  <form
+                    className="space-y-4 md:space-y-6"
+                    onSubmit={handleSubmit}
+                  >
+                    <Field
+                      name="name"
+                      label="Your Name"
+                      value={form.name}
+                      onChange={handleChange}
+                      error={err.name}
+                    />
+                    <Field
+                      name="email"
+                      label="Email Address"
+                      type="email"
+                      value={form.email}
+                      onChange={handleChange}
+                      error={err.email}
+                    />
+                    <Field
+                      name="details"
+                      label="Project Details"
+                      type="textarea"
+                      value={form.details}
+                      onChange={handleChange}
+                      error={err.details}
+                    />
                     <button
                       ref={(el) => (refs.current.button = el)}
                       type="submit"
@@ -235,7 +273,8 @@ const ContactUs = () => {
                     >
                       {loading ? (
                         <div className="flex items-center justify-center gap-3">
-                          <div className="w-5 h-5 border-t-2 border-white rounded-full animate-spin" /> SENDING...
+                          <div className="w-5 h-5 border-t-2 border-white rounded-full animate-spin" />{" "}
+                          SENDING...
                         </div>
                       ) : (
                         "START YOUR PROJECT"
@@ -245,7 +284,10 @@ const ContactUs = () => {
                 </>
               )}
             </div>
-            <div ref={(el) => (refs.current.quote = el)} className="text-center mt-6 md:mt-12 opacity-0">
+            <div
+              ref={(el) => (refs.current.quote = el)}
+              className="text-center mt-6 md:mt-12 opacity-0"
+            >
               <p className="text-white text-sm sm:text-base md:text-lg lg:text-xl italic font-light">
                 "Let's build something awesome together."
               </p>

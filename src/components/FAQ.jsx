@@ -37,7 +37,8 @@ const FAQ = () => {
           Frequently Asked Questions
         </h2>
         <p className="text-gray-600 mb-14 text-lg max-w-2xl mx-auto">
-          Everything you need to know about Skillyards programs and learning experience.
+          Everything you need to know about Skillyards programs and learning
+          experience.
         </p>
 
         <div className="space-y-4">

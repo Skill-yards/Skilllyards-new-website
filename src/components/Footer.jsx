@@ -6,7 +6,7 @@ import {
   Facebook01Icon,
   NewTwitterIcon,
   Linkedin01Icon,
-  YoutubeIcon
+  YoutubeIcon,
 } from "hugeicons-react";
 
 const Footer = () => {
@@ -16,7 +16,6 @@ const Footer = () => {
 
       {/* Creates a responsive grid layout to organize footer content into logical sections */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-20">
-
         {/* Highlights brand identity and mission to build trust and recognition */}
         <div className="flex flex-col gap-4 sm:col-span-2 lg:col-span-1">
           <img
@@ -91,7 +90,12 @@ const Footer = () => {
         <div>
           <h3 className="text-base md:text-lg font-semibold mb-4">Programs</h3>
           <div className="space-y-2 text-sm text-muted-foreground">
-            {["Full-Stack Development", "Digital Marketing", "Android Development", "UI/UX Design"].map((item) => (
+            {[
+              "Full-Stack Development",
+              "Digital Marketing",
+              "Android Development",
+              "UI/UX Design",
+            ].map((item) => (
               <a
                 key={item}
                 href={`/${item.toLowerCase().replace(/\s+/g, "-")}`}
@@ -104,8 +108,10 @@ const Footer = () => {
         </div>
 
         {/* Captures user interest for updates and promotions via email subscription */}
-         <div className="sm:col-span-2 lg:col-span-1">
-          <h3 className="text-base md:text-lg font-semibold mb-4">Newsletter</h3>
+        <div className="sm:col-span-2 lg:col-span-1">
+          <h3 className="text-base md:text-lg font-semibold mb-4">
+            Newsletter
+          </h3>
           <form className="space-y-3">
             <div className="flex flex-col sm:flex-row gap-2">
               <Input
@@ -122,7 +128,7 @@ const Footer = () => {
               </Button>
             </div>
             {/* Clarifies legal agreement for users opting into communication */}
-             <p className="text-xs text-muted-foreground leading-relaxed">
+            <p className="text-xs text-muted-foreground leading-relaxed">
               By subscribing, you agree to our{" "}
               <a
                 href="/privacy-policy"
@@ -132,9 +138,7 @@ const Footer = () => {
               </a>
             </p>
           </form>
-        </div> 
-
-
+        </div>
       </div>
 
       {/* Displays copyright notice to assert ownership and protect content */}

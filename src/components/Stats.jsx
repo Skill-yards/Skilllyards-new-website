@@ -22,9 +22,9 @@ function StatItem({
     const trigger = ScrollTrigger.create({
       trigger: el,
       start: "top 60%",
-      once: true, 
+      once: true,
       onEnter: () => {
-        const obj = { val: 0 }; 
+        const obj = { val: 0 };
         gsap.to(obj, {
           val: value,
           duration: 2,

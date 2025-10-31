@@ -21,22 +21,20 @@ const companyLogos = [
 
 const OurPartner = ({ className }) => (
   <section
-    className='relative py-20 overflow-hidden
+    className="relative py-20 overflow-hidden
       bg-gradient-to-b from-[#05070f] via-[#0b1b3f] to-[#0b1b3f]
-      '
+      "
   >
-    
-
     <div className={`relative z-10 text-center ${className} `}>
       <h2 className="text-4xl sm:text-5xl font-extrabold mb-4 text-white tracking-tight">
         Our Placement Partners
       </h2>
       <p className="text-lg text-slate-200/90 max-w-xl mx-auto">
-        We proudly collaborate with leading tech organizations driving innovation.
+        We proudly collaborate with leading tech organizations driving
+        innovation.
       </p>
       <div className="w-24 h-1.5 bg-gradient-to-r from-sky-400 to-indigo-400 rounded-full mx-auto mt-6 mb-12 shadow-lg" />
 
-      
       <div className={`relative overflow-hidden ${className}`}>
         <div
           className="flex items-center p-12"
@@ -59,7 +57,6 @@ const OurPartner = ({ className }) => (
                 />
               </div>
 
-            
               <figcaption className="mt-3 px-4 py-1.5 bg-white/10 text-white text-sm font-semibold rounded-full backdrop-blur-sm shadow-sm">
                 {name}
               </figcaption>

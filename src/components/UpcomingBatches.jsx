@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -8,11 +7,12 @@ gsap.registerPlugin(ScrollTrigger);
 const UpcomingBatches = ({ className }) => {
   const [batches, setBatches] = useState([]);
 
-
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("https://your-api-endpoint.com/upcoming-batches");
+        const res = await fetch(
+          "https://your-api-endpoint.com/upcoming-batches",
+        );
         const data = await res.json();
         setBatches(data);
       } catch (error) {
@@ -21,7 +21,6 @@ const UpcomingBatches = ({ className }) => {
     };
     fetchData();
   }, []);
-
 
   useEffect(() => {
     if (batches.length === 0) return;
@@ -44,10 +43,7 @@ const UpcomingBatches = ({ className }) => {
   }, [batches]);
 
   return (
-    <section
-      className={`relative py-20 px-6 overflow-hidden ${className}`}
-    >
-      
+    <section className={`relative py-20 px-6 overflow-hidden ${className}`}>
       <div className="absolute inset-0 -z-10 bg-gradient-to-br from-purple-100 via-indigo-50 to-yellow-50">
         <div className="absolute top-10 left-10 w-[300px] h-[300px] bg-purple-300/30 blur-3xl rounded-full animate-pulse"></div>
         <div className="absolute bottom-0 right-0 w-[350px] h-[350px] bg-yellow-200/30 blur-3xl rounded-full animate-pulse"></div>
@@ -57,9 +53,10 @@ const UpcomingBatches = ({ className }) => {
         Upcoming Batches & Events
       </h2>
 
-    
       {batches.length === 0 ? (
-        <p className="text-center text-gray-600 text-lg">Loading upcoming batches...</p>
+        <p className="text-center text-gray-600 text-lg">
+          Loading upcoming batches...
+        </p>
       ) : (
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
           {batches.map((batch) => (

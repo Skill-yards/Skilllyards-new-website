@@ -1,4 +1,4 @@
-import React, { useState, } from "react";
+import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
 import {
   NavigationMenu,
@@ -51,9 +51,7 @@ const Navbar = () => {
               <NavigationMenuList className="flex gap-4">
                 {/* Highlights homepage for quick access */}
                 <NavigationMenuItem>
-                  <NavigationMenuLink href="/" >
-                    Home
-                  </NavigationMenuLink>
+                  <NavigationMenuLink href="/">Home</NavigationMenuLink>
                 </NavigationMenuItem>
 
                 {/* Adds dropdowns for grouped navigation items to reduce clutter */}

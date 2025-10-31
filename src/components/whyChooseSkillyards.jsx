@@ -49,13 +49,11 @@ const WhyChooseSkillyards = () => {
       ref={sectionRef}
       className="relative py-20 px-6 bg-gradient-to-br from-sky-100 via-blue-200 to-cyan-100 overflow-hidden shadow-2xl"
     >
-      
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-10 left-10 w-[250px] h-[250px] bg-sky-300/40 blur-3xl rounded-full"></div>
         <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-blue-300/40 blur-3xl rounded-full"></div>
       </div>
 
-   
       <div className="max-w-5xl mx-auto text-center mb-14">
         <h2 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-600 via-sky-600 to-cyan-600 bg-clip-text text-transparent drop-shadow-lg">
           Why Choose <span className="text-blue-600">Skillyards</span>?
@@ -66,7 +64,6 @@ const WhyChooseSkillyards = () => {
         </p>
       </div>
 
-      
       <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
         {features.map((text, idx) => (
           <div
@@ -80,7 +77,6 @@ const WhyChooseSkillyards = () => {
         ))}
       </div>
 
-     
       <div className="flex justify-center mt-14">
         <a
           href="/contact"

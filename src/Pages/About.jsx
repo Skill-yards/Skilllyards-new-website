@@ -1,6 +1,5 @@
 import React from "react";
 
-
 const AboutUs = () => {
   const stats = [
     { number: "1st", label: "IT training center in Agra" },
@@ -32,7 +31,9 @@ const AboutUs = () => {
         </div>
 
         {/* Responsive Video */}
-          <div className="relative rounded-3xl overflow-hidden mb-14 shadow-2xl mx-auto max-w-2xl sm:max-w-4xl lg:max-w-5xl">          <video
+        <div className="relative rounded-3xl overflow-hidden mb-14 shadow-2xl mx-auto max-w-2xl sm:max-w-4xl lg:max-w-5xl">
+          {" "}
+          <video
             className="w-full h-[200px] sm:h-[260px] md:h-[340px] lg:h-[460px] object-cover rounded-3xl border-4 border-orange-400/40 shadow"
             controls
             autoPlay
