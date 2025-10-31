@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { CheckCircleIcon } from "@heroicons/react/24/solid";
+import { CircleCheckBig } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -74,7 +74,7 @@ const WhyChooseSkillyards = () => {
             className="feature-card flex items-start gap-4 bg-white/70 backdrop-blur-lg border border-sky-300/50 p-6 rounded-lg shadow-md 
             hover:shadow-[0_0_25px_rgba(14,165,233,0.3)] hover:-translate-y-1 transition-all duration-300 ease-in-out"
           >
-            <CheckCircleIcon className="h-6 w-6 text-sky-600 mt-1 flex-shrink-0" />
+            <CircleCheckBig className="h-6 w-6 text-sky-600 mt-1 flex-shrink-0" />
             <p className="text-blue-900 leading-relaxed">{text}</p>
           </div>
         ))}
