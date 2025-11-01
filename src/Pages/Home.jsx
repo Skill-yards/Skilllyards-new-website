@@ -1,11 +1,11 @@
-import Hero from "@/components/Hero";
-import OurPartner from "@/components/OurPartners";
-import Stats from "@/components/Stats";
+import Hero from "@/components/home/Hero";
+import OurPartner from "@/components/home/OurPartners";
+import Stats from "@/components/home/Stats";
 import WhatStudentsSaid from "@/components/feedback-home/WhatStudentsSaid";
 import useScrollAnimation from "../components/hooks/useScrollAnimation";
-import WhyChooseSkillyards from "@/components/whyChooseSkillyards";
-import UpcomingBatches from "@/components/UpcomingBatches";
-import FAQ from "@/components/FAQ";
+import WhyChooseSkillyards from "@/components/home/whyChooseSkillyards";
+import UpcomingBatches from "@/components/home/UpcomingBatches";
+import FAQ from "@/components/home/FAQ";
 
 const Home = () => {
   useScrollAnimation(".reveal");
