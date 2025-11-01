@@ -1,12 +1,12 @@
 import React from "react";
-import forelsket from "../assets/companies/forelsket.png";
-import s7c from "../assets/companies/s7c.png";
-import sndigitech from "../assets/companies/sndigitech.webp";
-import webmobril from "../assets/companies/webmobril.png";
-import attrix from "../assets/companies/attrix1.svg";
-import Infosys from "../assets/companies/infosys.webp";
-import Tcl from "../assets/companies/tcl.webp";
-import genpact from "../assets/companies/genpact.webp";
+import forelsket from "../../assets/companies/forelsket.png";
+import s7c from "../../assets/companies/s7c.png";
+import sndigitech from "../../assets/companies/sndigitech.webp";
+import webmobril from "../../assets/companies/webmobril.png";
+import attrix from "../../assets/companies/attrix1.svg";
+import Infosys from "../../assets/Companies/Infosys.webp";
+import Tcl from "../../assets/Companies/Tcl.webp";
+import genpact from "../../assets/companies/genpact.webp";
 
 const companyLogos = [
   { src: forelsket, name: "Forelsket" },
